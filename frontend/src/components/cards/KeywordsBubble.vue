@@ -46,7 +46,7 @@ const keywords = [
   {
     id: 'llm',
     title: 'LLM',
-    position: { x: 15, y: 20 },
+    position: { x: 10, y: 15 },
     content: `
       <p>LLM（大语言模型，Large Language Model）是一类基于深度学习的人工智能模型，如广为人知的 GPT（Generative Pretrained Transformer）系列、LLaMA（Large Language Model Meta AI）等。</p>
       <p>这些模型通过在海量文本数据上进行无监督预训练，学习到语言的结构、语义和语法等知识。它们具备强大的语言理解与生成能力，能完成诸如文本创作、问答系统、机器翻译等多种自然语言处理任务。</p>
@@ -56,7 +56,7 @@ const keywords = [
   {
     id: 'distillation',
     title: '蒸馏',
-    position: { x: 75, y: 30 },
+    position: { x: 85, y: 20 },
     content: `
       <p>蒸馏（Distillation）是一种模型压缩技术，旨在将一个复杂、庞大的教师模型（通常性能强大但计算成本高）的知识迁移到一个较小、更高效的学生模型中。</p>
       <p>其核心思想是让学生模型学习教师模型的输出（软标签）而非仅仅学习真实标签。比如，在图像分类任务中，教师模型对一张图片的预测可能是对各类别的概率分布，学生模型通过学习这种概率分布，能更好地捕捉到数据中的细微特征和关系。</p>
@@ -66,7 +66,7 @@ const keywords = [
   {
     id: 'parameters',
     title: '参数',
-    position: { x: 30, y: 60 },
+    position: { x: 25, y: 45 },
     content: `
       <p>参数（Parameters）是深度学习模型中的重要组成部分，是模型在训练过程中学习和调整的变量。在神经网络中，参数通常指神经元之间连接的权重（weights）和偏置（biases）。</p>
       <p>以一个简单的全连接神经网络为例，每个神经元接收来自上一层神经元的输入，这些输入通过权重进行加权求和，再加上偏置后经过激活函数得到输出。模型的参数数量越多，其理论上能够学习到的模式和表达能力就越强。</p>
@@ -76,7 +76,7 @@ const keywords = [
   {
     id: 'fine-tuning',
     title: '微调',
-    position: { x: 70, y: 70 },
+    position: { x: 75, y: 50 },
     content: `
       <p>微调（Fine-tuning）是在已经预训练好的模型基础上，针对特定任务或数据集进行进一步训练的过程。由于预训练模型在大规模通用数据上学习到了丰富的知识，但在具体应用场景中可能需要更专业的表现。</p>
       <p>比如，一个在通用文本上预训练的语言模型，在用于医疗领域的问答任务时，通过在医疗相关文本数据集上进行微调，模型能够更好地理解和回答医疗问题。</p>
@@ -86,7 +86,7 @@ const keywords = [
   {
     id: 'reinforcement-learning',
     title: '强化学习',
-    position: { x: 20, y: 80 },
+    position: { x: 15, y: 75 },
     content: `
       <p>强化学习（Reinforcement Learning）是一种机器学习范式，智能体（agent）通过与环境进行交互，根据环境反馈的奖励信号来学习最优行为策略。</p>
       <p>智能体在环境中采取行动，环境根据其行动给出奖励或惩罚反馈，智能体的目标是通过不断尝试，找到能使长期累积奖励最大化的策略。</p>
@@ -96,7 +96,7 @@ const keywords = [
   {
     id: 'transfer-learning',
     title: '迁移学习',
-    position: { x: 60, y: 85 },
+    position: { x: 70, y: 80 },
     content: `
       <p>迁移学习（Transfer Learning）旨在将在一个或多个源任务上学习到的知识迁移到一个目标任务上。当目标任务的数据量有限时，迁移学习尤为重要。</p>
       <p>例如，在图像识别领域，一个在大规模图像数据集（如 ImageNet）上预训练好的模型，已经学习到了丰富的图像特征（如边缘、纹理等）。当要进行特定类型图像（如医学影像）的识别任务时，可以将预训练模型的参数迁移过来，并在医学影像数据集上进行微调。</p>
@@ -147,12 +147,14 @@ const toggleKeyword = (id) => {
   background-color: rgba(240, 245, 255, 0.5);
   border-radius: 12px;
   overflow: hidden;
+  margin: 0 auto;
+  max-width: 1000px;
 }
 
 .keyword-bubble {
   position: absolute;
-  width: 120px;
-  height: 120px;
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--primary-color), #69c0ff);
   color: white;
