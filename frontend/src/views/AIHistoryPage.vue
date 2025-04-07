@@ -18,16 +18,12 @@
     <div class="timeline-wrapper">
       <AITimeline />
     </div>
-    
-    <!-- AI助手悬浮组件 -->
-    <AIAssistantFloat />
   </div>
 </template>
 
 <script setup>
 import { NIcon, NButton } from 'naive-ui';
 import AITimeline from '../components/timeline/AITimeline.vue';
-import AIAssistantFloat from '../components/AIAssistantFloat.vue';
 </script>
 
 <style scoped>
