@@ -9,9 +9,10 @@
         v-for="(period, index) in timelinePeriods" 
         :key="index"
         class="timeline-item"
-        @mouseenter="activePeriod = period.id"
-        @mouseleave="activePeriod = null"
+        :class="{ 'left': index % 2 === 0, 'right': index % 2 === 1 }"
       >
+        <div class="timeline-dot"></div>
+        
         <div class="timeline-period">
           <h3>{{ period.title }}</h3>
           <div class="timeline-year">{{ period.years }}</div>
@@ -19,6 +20,8 @@
         
         <div 
           class="timeline-content"
+          @mouseenter="activePeriod = period.id"
+          @mouseleave="activePeriod = null"
           :class="{ 'active': activePeriod === period.id }"
         >
           <div class="timeline-content-inner" v-html="period.content"></div>
@@ -85,7 +88,7 @@ const timelinePeriods = [
 
 .timeline-header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 }
 
 .timeline-header h2 {
@@ -97,6 +100,7 @@ const timelinePeriods = [
   position: relative;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 20px 0;
 }
 
 .timeline::before {
@@ -112,59 +116,86 @@ const timelinePeriods = [
 
 .timeline-item {
   position: relative;
-  margin-bottom: 60px;
+  margin-bottom: 80px;
+  display: flex;
+  justify-content: flex-start;
+  clear: both;
 }
 
 .timeline-item:last-child {
   margin-bottom: 0;
 }
 
-.timeline-period {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 auto;
-  width: 50%;
-  padding: 0 50px;
-  background-color: #fff;
+.timeline-item.left {
+  flex-direction: row;
+}
+
+.timeline-item.right {
+  flex-direction: row-reverse;
+}
+
+.timeline-dot {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 10;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  cursor: pointer;
+  box-shadow: 0 0 0 4px rgba(24, 144, 255, 0.2);
+}
+
+.timeline-period {
+  width: 150px;
+  text-align: center;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9;
+  background-color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .timeline-period h3 {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   margin-bottom: 5px;
   color: var(--primary-color);
 }
 
 .timeline-year {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: #666;
 }
 
 .timeline-content {
-  position: absolute;
-  width: 80%;
-  left: 50%;
-  transform: translateX(-50%);
+  width: 45%;
   padding: 20px;
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  z-index: 5;
-  opacity: 0;
-  visibility: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  margin-top: 50px;
   transition: all 0.3s ease;
-  top: 100%;
-  margin-top: 20px;
+  cursor: pointer;
+  opacity: 0.75;
+}
+
+.timeline-item.left .timeline-content {
+  margin-right: 15px;
+}
+
+.timeline-item.right .timeline-content {
+  margin-left: 15px;
 }
 
 .timeline-content.active {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   opacity: 1;
-  visibility: visible;
 }
 
 .timeline-content-inner {
@@ -177,5 +208,32 @@ const timelinePeriods = [
 
 .timeline-content-inner p:last-child {
   margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .timeline::before {
+    left: 20px;
+  }
+  
+  .timeline-item {
+    flex-direction: row !important;
+  }
+  
+  .timeline-dot {
+    left: 20px;
+  }
+  
+  .timeline-period {
+    left: 20px;
+    width: auto;
+    transform: none;
+    text-align: left;
+  }
+  
+  .timeline-content {
+    width: calc(100% - 70px);
+    margin-left: 70px !important;
+    margin-right: 0 !important;
+  }
 }
 </style> 
