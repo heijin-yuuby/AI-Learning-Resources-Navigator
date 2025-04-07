@@ -1,60 +1,58 @@
 # AI Knowledge Navigator
 
-一个智能 AI 知识导览和大模型体验平台。
+An intelligent AI knowledge guide and large model experience platform.。
 
-## 项目结构
+## Project Structure
 
-- `frontend`：Vue 3 + Vite 前端项目
-- 后端代码（待添加）
+- `frontend`：Vue 3 + Vite frontend project
+- `backend`：Spring Boot 3 backend project
 
-## 功能
+## Features
 
-- 知识导览浮窗 AI 助手
-- 章节滚动自动推荐问题
-- 智能对话交互
+- Knowledge navigation floating AI assistant
+- Automatic scroll recommendation questions
+- Intelligent dialogue interaction
 
-## 技术栈
+## Tech Stack
 
-### 前端
+### Frontend
 - Vue 3
 - Vite
 - Naive UI
 - Pinia
 
-### 后端 (规划中)
+### Backend (Planning)
 - Spring Boot 3
 - Java 17
 - Spring WebFlux
 
-### AI 集成
-- Cursor API（对话核心）
-- Hugging Face Transformers（可选本地模型）
+### AI Integration
+- Hugging Face Transformers
 
-## 开发指南
 
-### 前端开发
+### Frontend Development
 
 ```bash
-# 进入前端目录
+# Enter the frontend directory
 cd frontend
 
-# 安装依赖
+# Install dependencies
 npm install
 
-# 启动开发服务器
+# Start the development server
 npm run dev
 ```
 
-服务器将在 http://localhost:3000 启动
+The server will start at http://localhost:3000
 
-### 后端开发 (待添加)
+### Backend Development (To be added)
 
-## 关键模块
+## Key Modules
 
-- **知识导览浮窗 AI 助手**：提供上下文感知的 AI 辅助功能
-- **章节识别**：自动检测用户正在浏览的章节，提供相关问题
-- **智能对话**：基于当前上下文回答用户问题
+- **Knowledge navigation floating AI assistant**：Provide AI assistance with context awareness
+- **Chapter recognition**：Automatically detect the chapter the user is browsing, provide related questions
+- **Intelligent dialogue**：Based on the current context, answer user questions
 
-## 贡献指南
+## Contribution Guide
 
-欢迎提交 Pull Request 或创建 Issue 来改进项目。
+Welcome to submit Pull Request or create Issue to improve the project.
