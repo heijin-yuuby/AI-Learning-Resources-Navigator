@@ -18,15 +18,11 @@
     <div class="content">
       <KeywordsBubble />
     </div>
-    
-    <!-- AI助手悬浮组件 -->
-    <AIAssistantFloat />
   </div>
 </template>
 
 <script setup>
 import { NIcon, NButton } from 'naive-ui';
-import AIAssistantFloat from '../components/AIAssistantFloat.vue';
 import KeywordsBubble from '../components/cards/KeywordsBubble.vue';
 </script>
 

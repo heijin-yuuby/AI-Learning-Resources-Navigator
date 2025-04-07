@@ -1,7 +1,7 @@
 <template>
   <div class="experience-container">
     <div class="page-header">
-      <n-button quaternary @click="$router.push('/')">
+      <n-button quaternary @click="$router.push('/about-ai')">
         <template #icon>
           <n-icon>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -9,26 +9,22 @@
             </svg>
           </n-icon>
         </template>
-        返回首页
+        返回
       </n-button>
-      <h1 class="page-title">体验人工智能</h1>
-      <p class="page-subtitle">亲自体验AI的强大能力</p>
+      <h1 class="page-title">AI体验</h1>
+      <p class="page-subtitle">亲身体验人工智能的强大功能</p>
     </div>
     
     <div class="content">
-      <n-alert title="功能开发中" type="info">
-        AI体验功能正在开发中，敬请期待...
+      <n-alert title="内容开发中" type="info">
+        该部分内容正在开发中，敬请期待...
       </n-alert>
     </div>
-    
-    <!-- AI助手悬浮组件 -->
-    <AIAssistantFloat />
   </div>
 </template>
 
 <script setup>
 import { NIcon, NButton, NAlert } from 'naive-ui';
-import AIAssistantFloat from '../components/AIAssistantFloat.vue';
 </script>
 
 <style scoped>

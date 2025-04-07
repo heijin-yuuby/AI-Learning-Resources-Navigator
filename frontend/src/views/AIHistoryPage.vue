@@ -11,23 +11,19 @@
         </template>
         返回
       </n-button>
-      <h1 class="page-title">人工智能发展历史</h1>
-      <p class="page-subtitle">探索人工智能从理论萌芽到现代应用的发展历程</p>
+      <h1 class="page-title">AI发展历程</h1>
+      <p class="page-subtitle">探索人工智能从诞生到现在的关键里程碑</p>
     </div>
     
-    <div class="timeline-wrapper">
+    <div class="content">
       <AITimeline />
     </div>
-    
-    <!-- AI助手悬浮组件 -->
-    <AIAssistantFloat />
   </div>
 </template>
 
 <script setup>
 import { NIcon, NButton } from 'naive-ui';
 import AITimeline from '../components/timeline/AITimeline.vue';
-import AIAssistantFloat from '../components/AIAssistantFloat.vue';
 </script>
 
 <style scoped>
@@ -57,7 +53,11 @@ import AIAssistantFloat from '../components/AIAssistantFloat.vue';
   margin: 0 auto;
 }
 
-.timeline-wrapper {
-  margin-top: 60px;
+.content {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
 }
 </style> 
