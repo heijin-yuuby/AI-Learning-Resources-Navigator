@@ -16,9 +16,7 @@
     </div>
     
     <div class="content">
-      <n-alert title="内容开发中" type="info">
-        该部分内容正在开发中，敬请期待...
-      </n-alert>
+      <KeywordsBubble />
     </div>
     
     <!-- AI助手悬浮组件 -->
@@ -27,8 +25,9 @@
 </template>
 
 <script setup>
-import { NIcon, NButton, NAlert } from 'naive-ui';
+import { NIcon, NButton } from 'naive-ui';
 import AIAssistantFloat from '../components/AIAssistantFloat.vue';
+import KeywordsBubble from '../components/cards/KeywordsBubble.vue';
 </script>
 
 <style scoped>
