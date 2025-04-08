@@ -1,6 +1,6 @@
-# AI Deep Learning Web Project
+# AI Learning Resources Navigator
 
-This project is a web application built with Vue.js that explores AI history and knowledge.
+This project is a web application built with Vue.js that provides easy navigation to various AI learning resources and popular LLM platforms.
 
 ## Prerequisites
 
@@ -76,6 +76,16 @@ frontend/
 └── package.json       # Project dependencies
 ```
 
+## Features
+
+- AI History Timeline
+- Core AI Knowledge Overview
+- Quick Navigation to Popular LLM Platforms:
+  - ChatGPT
+  - Google Gemini
+  - Claude
+  - Other AI Tools and Resources
+
 ## Dependencies
 
 The project uses the following main dependencies:
@@ -83,7 +93,6 @@ The project uses the following main dependencies:
 - Vue Router 4
 - Pinia (State Management)
 - Naive UI (UI Components)
-- Axios (HTTP Client)
 - Vite (Build Tool)
 
 ## Development

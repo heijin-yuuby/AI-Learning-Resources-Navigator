@@ -27,9 +27,9 @@
       
       <div class="card-wrapper">
         <InfoCard 
-          title="体验人工智能" 
-          description="亲自尝试最新AI模型，感受智能技术的魅力"
-          :to="{ name: 'experience-ai' }"
+          title="AI 平台导航" 
+          description="探索和访问各种强大的 AI 语言模型平台"
+          :to="{ name: 'llm-platforms' }"
         >
           <div class="card-icon">
             <n-icon size="48">
