@@ -1,0 +1,250 @@
+:root {
+  /* 主色调 - 深蓝色系 */
+  --primary-color: #1F466B;
+  --primary-gradient: linear-gradient(135deg, #1F466B 0%, #2A5880 100%);
+  --primary-hover-gradient: linear-gradient(135deg, #2A5880 0%, #1F466B 100%);
+  
+  /* 背景色 */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F9F7F2;
+  --bg-tertiary: #F5E6BF;
+  
+  /* 文字颜色 */
+  --text-primary: #1F466B;
+  --text-secondary: #4A5568;
+  --text-tertiary: #718096;
+  --text-light: #FFFFFF;
+  
+  /* 强调色 */
+  --accent-blue: #1F466B;     /* 深蓝色 */
+  --accent-yellow: #F5E6BF;   /* 米黄色 */
+  --accent-cream: #FFFFF0;    /* 奶油色 */
+  --accent-green: #E0EEE0;    /* 淡绿色 */
+  --accent-orange: #FFEFD5;   /* 杏色 */
+  
+  /* 导航颜色 */
+  --nav-bg: #1b3e61;
+  --nav-text: var(--text-light);
+  --nav-text-hover: var(--accent-yellow);
+  
+  /* 边框和阴影 */
+  --border-color: rgba(0, 0, 0, 0.1);
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-xl: 20px;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  
+  /* 状态颜色 */
+  --success: #E0EEE0;
+  --warning: #F5E6BF;
+  --error: #FFE4E1;
+  --info: #E6F0F8;
+  
+  /* 卡片和容器 */
+  --card-bg: #FFFFFF;
+  --card-border: #F0F0F0;
+  
+  /* 动画和过渡 */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* 间距 */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
+  
+  /* 字体 */
+  --font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-xxl: 2rem;
+  --font-size-xxxl: 3rem;
+}
+
+/* 基础样式重置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-md);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+/* 基础排版样式 */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+h1 { font-size: var(--font-size-xxxl); }
+h2 { font-size: var(--font-size-xxl); }
+h3 { font-size: var(--font-size-xl); }
+h4 { font-size: var(--font-size-lg); }
+h5 { font-size: var(--font-size-md); }
+h6 { font-size: var(--font-size-sm); }
+
+p {
+  margin-bottom: var(--spacing-md);
+  color: var(--text-secondary);
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: #2A5880;
+}
+
+/* 容器类 */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* 按钮样式 */
+button, .btn {
+  cursor: pointer;
+  font-family: var(--font-family);
+  border: none;
+  outline: none;
+  background: none;
+  transition: all var(--transition-normal);
+}
+
+.btn-primary {
+  background: var(--primary-gradient);
+  color: var(--text-light);
+  padding: var(--spacing-sm) var(--spacing-xl);
+  border-radius: var(--border-radius-xl);
+  font-weight: 500;
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover-gradient);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--primary-color);
+  padding: var(--spacing-sm) var(--spacing-xl);
+  border-radius: var(--border-radius-xl);
+  border: 1px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+  background: rgba(31, 70, 107, 0.1);
+}
+
+/* 渐变文本 */
+.gradient-text {
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+/* 卡片样式 */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* 动画 */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn var(--transition-normal) ease forwards;
+}
+
+.fade-in-up {
+  animation: fadeInUp var(--transition-normal) ease forwards;
+}
+
+/* 页面过渡 */
+.page-transition-enter-active,
+.page-transition-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.page-transition-enter-from,
+.page-transition-leave-to {
+  opacity: 0;
+}
+
+/* 深色模式变量 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #0A1622;
+    --bg-secondary: #142438;
+    --bg-tertiary: #1F3450;
+    
+    --text-primary: #FFFFFF;
+    --text-secondary: #E0E0E0;
+    --text-tertiary: #B0B0B0;
+    --text-light: #FFFFFF;
+    
+    --card-bg: #142438;
+    --card-border: #1F3450;
+    --border-color: rgba(255, 255, 255, 0.1);
+    
+    --primary-color: #3A6EA5;
+    --primary-gradient: linear-gradient(135deg, #3A6EA5 0%, #2A5880 100%);
+    --primary-hover-gradient: linear-gradient(135deg, #2A5880 0%, #3A6EA5 100%);
+    
+    --accent-yellow: #D9C27E;
+    
+    --nav-bg: #0A1622;
+    
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+  }
+} 

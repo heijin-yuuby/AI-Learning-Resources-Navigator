@@ -3,7 +3,7 @@ import HomePage from '../views/HomePage.vue';
 import AboutAIPage from '../views/AboutAIPage.vue';
 import AIHistoryPage from '../views/AIHistoryPage.vue';
 import AIKnowledgePage from '../views/AIKnowledgePage.vue';
-import ExperienceAIPage from '../views/ExperienceAIPage.vue';
+import LLMPlatformsPage from '../views/LLMPlatformsPage.vue';
 
 const routes = [
   {
@@ -27,9 +27,9 @@ const routes = [
     component: AIKnowledgePage
   },
   {
-    path: '/experience-ai',
-    name: 'experience-ai',
-    component: ExperienceAIPage
+    path: '/llm-platforms',
+    name: 'llm-platforms',
+    component: LLMPlatformsPage
   }
 ];
 

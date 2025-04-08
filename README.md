@@ -1,58 +1,127 @@
-# AI Knowledge Navigator
+# AI Learning Resources Navigator
 
-An intelligent AI knowledge guide and large model experience platform.。
+This project is a web application built with Vue.js that provides easy navigation to various AI learning resources and popular LLM platforms.
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+### For macOS:
+1. **Node.js and npm**
+   ```bash
+   # Using Homebrew
+   brew install node
+
+   # Verify installation
+   node --version
+   npm --version
+   ```
+
+2. **Git** (if not already installed)
+   ```bash
+   brew install git
+   ```
+
+### For Windows:
+1. **Node.js and npm**
+   - Download the installer from [Node.js official website](https://nodejs.org/)
+   - Choose the LTS (Long Term Support) version
+   - Run the installer and follow the installation wizard
+   - Verify installation by opening Command Prompt:
+     ```bash
+     node --version
+     npm --version
+     ```
+
+2. **Git** (if not already installed)
+   - Download Git from [Git official website](https://git-scm.com/download/win)
+   - Run the installer and follow the installation wizard
+
+## Project Setup
+
+1. **Clone the repository**
+   ```bash
+   git clone [your-repository-url]
+   cd Ai-deep-learning-web
+   ```
+
+2. **Install Frontend Dependencies**
+   ```bash
+   # Navigate to frontend directory
+   cd frontend
+
+   # Install dependencies
+   npm install
+   ```
+
+3. **Start the Development Server**
+   ```bash
+   # Start the frontend development server
+   npm run dev
+   ```
+
+The application will be available at `http://localhost:3000` (or another port if 3000 is in use).
 
 ## Project Structure
 
-- `frontend`：Vue 3 + Vite frontend project
-- `backend`：Spring Boot 3 backend project
+```
+frontend/
+├── src/
+│   ├── components/     # Vue components
+│   ├── views/         # Page components
+│   ├── router/        # Vue Router configuration
+│   ├── store/         # Pinia store
+│   └── App.vue        # Root component
+├── public/            # Static assets
+└── package.json       # Project dependencies
+```
 
 ## Features
 
-- Knowledge navigation floating AI assistant
-- Automatic scroll recommendation questions
-- Intelligent dialogue interaction
+- AI History Timeline
+- Core AI Knowledge Overview
+- Quick Navigation to Popular LLM Platforms:
+  - ChatGPT
+  - Google Gemini
+  - Claude
+  - Other AI Tools and Resources
 
-## Tech Stack
+## Dependencies
 
-### Frontend
-- Vue 3
-- Vite
-- Naive UI
-- Pinia
+The project uses the following main dependencies:
+- Vue.js 3
+- Vue Router 4
+- Pinia (State Management)
+- Naive UI (UI Components)
+- Vite (Build Tool)
 
-### Backend (Planning)
-- Spring Boot 3
-- Java 17
-- Spring WebFlux
+## Development
 
-### AI Integration
-- Hugging Face Transformers
+- The development server will automatically reload when you make changes
+- Use `npm run build` to build for production
+- Use `npm run preview` to preview the production build locally
 
+## Troubleshooting
 
-### Frontend Development
+### Common Issues
 
-```bash
-# Enter the frontend directory
-cd frontend
+1. **Port Already in Use**
+   - If port 3000 is already in use, the development server will automatically try the next available port
+   - You can manually specify a port by modifying the `vite.config.js` file
 
-# Install dependencies
-npm install
+2. **Node Modules Issues**
+   - If you encounter dependency-related errors, try:
+     ```bash
+     rm -rf node_modules package-lock.json
+     npm install
+     ```
 
-# Start the development server
-npm run dev
-```
+3. **Vue Router Issues**
+   - Ensure vue-router is properly installed:
+     ```bash
+     npm install vue-router@4
+     ```
 
-The server will start at http://localhost:3000
+## Support
 
-### Backend Development (To be added)
-
-## Key Modules
-
-- **Knowledge navigation floating AI assistant**：Provide AI assistance with context awareness
-- **Chapter recognition**：Automatically detect the chapter the user is browsing, provide related questions
-- **Intelligent dialogue**：Based on the current context, answer user questions
-
-## Contribution Guide
-
-Welcome to submit Pull Request or create Issue to improve the project.
+For any issues or questions, please open an issue in the repository.
