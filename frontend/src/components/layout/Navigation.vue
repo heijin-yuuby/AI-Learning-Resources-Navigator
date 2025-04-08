@@ -56,7 +56,7 @@ const navigateToLLMPlatforms = () => {
 
 <style scoped>
 .navigation {
-  background-color: #1A0B33;
+  background-color: #1F466B;
   padding: 16px 0;
   width: 100%;
   position: fixed;
@@ -72,18 +72,18 @@ const navigateToLLMPlatforms = () => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
+  padding: 0 var(--spacing-md);
   position: relative;
 }
 
 .nav-logo {
-  font-size: 1.5rem;
+  font-size: var(--font-size-xl);
   font-weight: 700;
   z-index: 1001;
 }
 
 .logo-link {
-  color: white;
+  color: var(--text-light);
   text-decoration: none;
 }
 
@@ -92,12 +92,12 @@ const navigateToLLMPlatforms = () => {
   align-items: center;
   justify-content: space-between;
   flex: 1;
-  margin-left: 40px;
+  margin-left: var(--spacing-xl);
 }
 
 .nav-links {
   display: flex;
-  gap: 32px;
+  gap: var(--spacing-xl);
 }
 
 .nav-link {
@@ -110,35 +110,35 @@ const navigateToLLMPlatforms = () => {
 
 .nav-link:hover,
 .nav-link.router-link-active {
-  color: white;
+  color: #F5E6BF;
 }
 
 .nav-actions {
   display: flex;
-  gap: 16px;
+  gap: var(--spacing-md);
   align-items: center;
 }
 
 .nav-action-link {
   color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
-  font-size: 1rem;
-  transition: color 0.2s;
+  font-size: var(--font-size-md);
+  transition: color var(--transition-fast);
 }
 
 .nav-action-link:hover {
-  color: white;
+  color: #F5E6BF;
 }
 
 .primary-button {
-  background: linear-gradient(90deg, #7C4DFF 0%, #43A0FF 100%);
+  background: linear-gradient(90deg, #1F466B 0%, #2A5880 100%);
   border: none;
   border-radius: 20px;
   padding: 4px 16px;
 }
 
 .button-link {
-  color: white;
+  color: var(--text-light);
   text-decoration: none;
 }
 
@@ -161,9 +161,9 @@ const navigateToLLMPlatforms = () => {
   display: block;
   height: 3px;
   width: 100%;
-  background-color: white;
+  background-color: var(--text-light);
   border-radius: 3px;
-  transition: all 0.3s ease;
+  transition: all var(--transition-normal);
 }
 
 .toggle-icon.active span:nth-child(1) {
@@ -189,12 +189,12 @@ const navigateToLLMPlatforms = () => {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #1A0B33;
+    background-color: var(--nav-bg);
     flex-direction: column;
     justify-content: center;
     margin-left: 0;
     transform: translateX(100%);
-    transition: transform 0.3s ease;
+    transition: transform var(--transition-normal);
     z-index: 1000;
   }
   
@@ -204,19 +204,19 @@ const navigateToLLMPlatforms = () => {
   
   .nav-links {
     flex-direction: column;
-    gap: 20px;
+    gap: var(--spacing-lg);
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: var(--spacing-xl);
   }
   
   .nav-link {
-    font-size: 1.2rem;
-    padding: 10px;
+    font-size: var(--font-size-lg);
+    padding: var(--spacing-sm);
   }
   
   .nav-actions {
     flex-direction: column;
-    gap: 20px;
+    gap: var(--spacing-lg);
     width: 100%;
     align-items: center;
   }

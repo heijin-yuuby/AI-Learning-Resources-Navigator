@@ -12,7 +12,7 @@
     <div class="container main-content">
       <div class="nav-grid">
         <div class="nav-card" @click="$router.push('/ai-history')">
-          <n-icon size="48" color="#7C4DFF">
+          <n-icon size="48" color="var(--primary-color)">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path fill="currentColor" d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10s10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8s8 3.6 8 8s-3.6 8-8 8zm.5-13H11v6l5.2 3.2l.8-1.3l-4.5-2.7V7z"/>
             </svg>
@@ -22,7 +22,7 @@
         </div>
         
         <div class="nav-card" @click="$router.push('/ai-knowledge')">
-          <n-icon size="48" color="#7C4DFF">
+          <n-icon size="48" color="var(--primary-color)">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path fill="currentColor" d="M12 2L2 7l10 5l10-5l-10-5zm0 10L2 7v10l10 5l10-5V7l-10 5zm0 10l-9-4.5v-5l9 4.5l9-4.5v5l-9 4.5z"/>
             </svg>
@@ -32,7 +32,7 @@
         </div>
         
         <div class="nav-card" @click="$router.push('/llm-platforms')">
-          <n-icon size="48" color="#7C4DFF">
+          <n-icon size="48" color="var(--primary-color)">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path fill="currentColor" d="M20 3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14H4v-5h7v5zm0-7H4V7h7v3zm9 7h-7v-8h7v8z"/>
             </svg>
@@ -85,30 +85,29 @@ import Navigation from '../components/layout/Navigation.vue';
 <style scoped>
 .about-ai-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: var(--bg-primary);
   padding-top: 70px; /* Add padding for fixed navigation */
 }
 
 .page-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--primary-gradient);
   padding: 40px 0;
-  color: white;
+  color: var(--text-light);
   text-align: center;
 }
 
 .page-title {
   font-size: clamp(2rem, 6vw, 3rem);
   margin-bottom: 1rem;
-  background: linear-gradient(to right, #ffffff, #c3cfe2);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--text-light);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .page-subtitle {
   font-size: clamp(0.9rem, 3vw, 1.2rem);
   max-width: 600px;
   margin: 0 auto;
-  opacity: 0.9;
+  color: var(--text-light);
   padding: 0 20px;
 }
 
@@ -126,10 +125,10 @@ import Navigation from '../components/layout/Navigation.vue';
 }
 
 .nav-card {
-  background: white;
+  background: var(--card-bg);
   border-radius: 12px;
   padding: 25px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-md);
   transition: all 0.3s ease;
   cursor: pointer;
   text-align: center;
@@ -141,17 +140,17 @@ import Navigation from '../components/layout/Navigation.vue';
 
 .nav-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-lg);
 }
 
 .nav-card h3 {
   font-size: 1.2rem;
   margin: 15px 0 10px;
-  color: #333;
+  color: var(--text-primary);
 }
 
 .nav-card p {
-  color: #666;
+  color: var(--text-secondary);
   font-size: 0.9rem;
   line-height: 1.5;
 }
@@ -163,20 +162,20 @@ import Navigation from '../components/layout/Navigation.vue';
 }
 
 .ai-intro, .branch-section {
-  background: white;
+  background: var(--card-bg);
   border-radius: 12px;
   padding: 30px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-md);
 }
 
 .ai-intro h2, .branch-section h2 {
-  color: #333;
+  color: var(--text-primary);
   font-size: clamp(1.5rem, 4vw, 1.8rem);
   margin-bottom: 20px;
 }
 
 .ai-intro p {
-  color: #666;
+  color: var(--text-secondary);
   line-height: 1.7;
   font-size: clamp(0.9rem, 2vw, 1rem);
 }
@@ -188,22 +187,22 @@ import Navigation from '../components/layout/Navigation.vue';
 }
 
 .branch-card {
-  background: #f8f9fa;
+  background: var(--bg-secondary);
   border-radius: 8px;
   padding: 20px;
-  border-left: 4px solid var(--primary-color);
+  border-left: 4px solid var(--accent-blue);
   height: 100%;
 }
 
 .branch-card h3 {
   font-size: 1.2rem;
   margin-bottom: 10px;
-  color: #333;
+  color: var(--text-primary);
 }
 
 .branch-card p {
   font-size: 0.9rem;
-  color: #666;
+  color: var(--text-secondary);
   margin-bottom: 0;
   line-height: 1.6;
 }

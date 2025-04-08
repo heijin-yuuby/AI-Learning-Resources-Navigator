@@ -27,7 +27,7 @@
         <div class="feature-block main-feature" @click="$router.push('/ai-history')">
           <div class="feature-content">
             <div class="feature-icon">
-              <n-icon size="48" color="#7C4DFF">
+              <n-icon size="48" color="var(--primary-color)">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                   <path fill="currentColor" d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10s10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8s8 3.6 8 8s-3.6 8-8 8zm.5-13H11v6l5.2 3.2l.8-1.3l-4.5-2.7V7z"/>
                 </svg>
@@ -41,7 +41,7 @@
         <div class="feature-block secondary-feature" @click="$router.push('/ai-knowledge')">
           <div class="feature-content">
             <div class="feature-icon">
-              <n-icon size="48" color="#7C4DFF">
+              <n-icon size="48" color="var(--primary-color)">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                   <path fill="currentColor" d="M12 2L2 7l10 5l10-5l-10-5zm0 10L2 7v10l10 5l10-5V7l-10 5zm0 10l-9-4.5v-5l9 4.5l9-4.5v5l-9 4.5z"/>
                 </svg>
@@ -55,7 +55,7 @@
         <div class="feature-block secondary-feature" @click="$router.push('/llm-platforms')">
           <div class="feature-content">
             <div class="feature-icon">
-              <n-icon size="48" color="#7C4DFF">
+              <n-icon size="48" color="var(--primary-color)">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                   <path fill="currentColor" d="M20 3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14H4v-5h7v5zm0-7H4V7h7v3zm9 7h-7v-8h7v8z"/>
                 </svg>
@@ -69,7 +69,7 @@
         <div class="feature-block tertiary-feature" @click="$router.push('/about-ai')">
           <div class="feature-content">
             <div class="feature-icon">
-              <n-icon size="48" color="#7C4DFF">
+              <n-icon size="48" color="var(--primary-color)">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                   <path fill="currentColor" d="M12 2c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2zm0 18c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8zm1-13h-2v6h2V7zm0 8h-2v2h2v-2z"/>
                 </svg>
@@ -92,7 +92,7 @@ import Navigation from '../components/layout/Navigation.vue';
 <style scoped>
 .home-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: var(--bg-primary);
   padding-top: 70px; /* Add padding for fixed navigation */
 }
 
@@ -103,7 +103,7 @@ import Navigation from '../components/layout/Navigation.vue';
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--primary-gradient);
   padding: 0 20px;
   position: relative;
   overflow: hidden;
@@ -132,7 +132,7 @@ import Navigation from '../components/layout/Navigation.vue';
   font-size: clamp(2.5rem, 8vw, 4rem);
   font-weight: 700;
   margin-bottom: 1rem;
-  background: linear-gradient(to right, #ffffff, #c3cfe2);
+  background: linear-gradient(to right, var(--text-primary), var(--text-secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: fadeInUp 1s ease;
@@ -141,7 +141,7 @@ import Navigation from '../components/layout/Navigation.vue';
 .hero-subtitle {
   font-size: clamp(1rem, 4vw, 1.5rem);
   margin-bottom: 2rem;
-  opacity: 0.9;
+  color: var(--text-light);
   animation: fadeInUp 1s ease 0.2s both;
 }
 
@@ -153,7 +153,7 @@ import Navigation from '../components/layout/Navigation.vue';
 }
 
 .primary-button {
-  background: linear-gradient(90deg, #7C4DFF 0%, #43A0FF 100%);
+  background: var(--primary-gradient);
   border: none;
   border-radius: 30px;
   padding: 0 32px;
@@ -162,8 +162,8 @@ import Navigation from '../components/layout/Navigation.vue';
 }
 
 .secondary-button {
-  color: white;
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  color: var(--text-light);
+  border: 2px solid var(--border-color);
   border-radius: 30px;
   padding: 0 32px;
   height: 50px;
@@ -183,13 +183,13 @@ import Navigation from '../components/layout/Navigation.vue';
 
 .section-title {
   font-size: clamp(1.8rem, 5vw, 2.5rem);
-  color: #333;
+  color: var(--text-primary);
   margin-bottom: 1rem;
 }
 
 .section-subtitle {
   font-size: clamp(1rem, 3vw, 1.2rem);
-  color: #666;
+  color: var(--text-secondary);
   max-width: 700px;
   margin: 0 auto;
   padding: 0 20px;
@@ -204,9 +204,9 @@ import Navigation from '../components/layout/Navigation.vue';
 }
 
 .feature-block {
-  background: white;
+  background: var(--card-bg);
   border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-md);
   transition: all 0.3s ease;
   cursor: pointer;
   overflow: hidden;
@@ -216,7 +216,7 @@ import Navigation from '../components/layout/Navigation.vue';
 
 .feature-block:hover {
   transform: translateY(-10px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-lg);
 }
 
 .main-feature {
@@ -243,16 +243,17 @@ import Navigation from '../components/layout/Navigation.vue';
 
 .feature-icon {
   margin-bottom: 20px;
+  color: var(--primary-color);
 }
 
 .feature-title {
   font-size: 1.5rem;
   margin-bottom: 12px;
-  color: #333;
+  color: var(--text-primary);
 }
 
 .feature-description {
-  color: #666;
+  color: var(--text-secondary);
   line-height: 1.6;
   flex-grow: 1;
 }

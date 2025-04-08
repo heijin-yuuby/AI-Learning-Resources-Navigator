@@ -30,21 +30,21 @@ import LLMPlatforms from '../components/LLMPlatforms.vue';
 <style scoped>
 .platforms-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: var(--bg-primary);
   padding-top: 70px; /* Add padding for fixed navigation */
 }
 
 .page-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--primary-gradient);
   padding: 40px 0;
-  color: white;
+  color: var(--text-light);
   text-align: center;
 }
 
 .page-title {
   font-size: clamp(2rem, 6vw, 3rem);
   margin-bottom: 1rem;
-  background: linear-gradient(to right, #ffffff, #c3cfe2);
+  background: linear-gradient(to right, var(--text-primary), var(--text-secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -53,7 +53,7 @@ import LLMPlatforms from '../components/LLMPlatforms.vue';
   font-size: clamp(0.9rem, 3vw, 1.2rem);
   max-width: 600px;
   margin: 0 auto;
-  opacity: 0.9;
+  color: var(--text-light);
   padding: 0 20px;
 }
 
@@ -68,10 +68,10 @@ import LLMPlatforms from '../components/LLMPlatforms.vue';
 }
 
 .intro-content {
-  background: white;
+  background: var(--card-bg);
   border-radius: 12px;
   padding: 25px 20px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-md);
   text-align: center;
   max-width: 800px;
   margin: 0 auto;
@@ -79,12 +79,12 @@ import LLMPlatforms from '../components/LLMPlatforms.vue';
 
 .intro-content h2 {
   font-size: clamp(1.5rem, 4vw, 1.8rem);
-  color: #333;
+  color: var(--text-primary);
   margin-bottom: 15px;
 }
 
 .intro-content p {
-  color: #666;
+  color: var(--text-secondary);
   line-height: 1.7;
   font-size: clamp(0.9rem, 2vw, 1rem);
 }
