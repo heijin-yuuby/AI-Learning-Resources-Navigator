@@ -1,93 +1,323 @@
 <template>
-  <div class="home-container">
+  <div class="home-page">
+    <Navigation />
+    
     <div class="hero-section">
-      <h1 class="hero-title">AI 知识导览</h1>
-      <p class="hero-subtitle">探索人工智能，了解前沿技术</p>
+      <div class="hero-content">
+        <h1 class="hero-title">AI Knowledge</h1>
+        <p class="hero-subtitle">探索人工智能的无限可能，了解前沿技术</p>
+        <div class="hero-buttons">
+          <n-button type="primary" size="large" class="primary-button" @click="$router.push('/about-ai')">
+            了解 AI
+          </n-button>
+          <n-button text size="large" class="secondary-button" @click="$router.push('/llm-platforms')">
+            浏览平台
+          </n-button>
+        </div>
+      </div>
     </div>
     
-    <div class="cards-container">
-      <div class="card-wrapper">
-        <InfoCard 
-          title="关于人工智能" 
-          description="了解人工智能的发展历史和核心知识点"
-          :to="{ name: 'about-ai' }"
-        >
-          <div class="card-icon">
-            <n-icon size="48">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M21.928 11.607c-.202-.488-.635-.605-.928-.633V8c0-1.103-.897-2-2-2h-6V4.61c.305-.274.5-.668.5-1.11a1.5 1.5 0 0 0-3 0c0 .442.195.836.5 1.11V6H5c-1.103 0-2 .897-2 2v2.997l-.082.006A1 1 0 0 0 1.99 12v2a1 1 0 0 0 1 1H3v5c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2v-5a1 1 0 0 0 1-1v-1.938a1.006 1.006 0 0 0-.072-.455zM5 20V8h14l.001 3.996L19 12v2l.001.005l.001 5.995H5z"/>
-                <ellipse fill="currentColor" cx="8.5" cy="12" rx="1.5" ry="2"/>
-                <ellipse fill="currentColor" cx="15.5" cy="12" rx="1.5" ry="2"/>
-                <path fill="currentColor" d="M8 16h8v2H8z"/>
-              </svg>
-            </n-icon>
-          </div>
-        </InfoCard>
+    <div class="features-section">
+      <div class="section-header">
+        <h2 class="section-title">探索 AI 世界</h2>
+        <p class="section-subtitle">从历史了解过去，从知识把握现在，从平台预见未来</p>
       </div>
       
-      <div class="card-wrapper">
-        <InfoCard 
-          title="AI 平台导航" 
-          description="探索和访问各种强大的 AI 语言模型平台"
-          :to="{ name: 'llm-platforms' }"
-        >
-          <div class="card-icon">
-            <n-icon size="48">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M20 7h-4V4c0-1.103-.897-2-2-2h-4c-1.103 0-2 .897-2 2v3H4c-1.103 0-2 .897-2 2v6c0 1.103.897 2 2 2h4v3c0 1.103.897 2 2 2h4c1.103 0 2-.897 2-2v-3h4c1.103 0 2-.897 2-2V9c0-1.103-.897-2-2-2zM10 4h4v3h-4V4zM4 9h16l.002 6H4V9zm10 11h-4v-3h4v3z"/>
-                <path fill="currentColor" d="m15.707 12.707l-3 3a.999.999 0 1 1-1.414-1.414l3-3a.999.999 0 1 1 1.414 1.414z"/>
-              </svg>
-            </n-icon>
+      <div class="mosaic-layout">
+        <div class="feature-block main-feature" @click="$router.push('/ai-history')">
+          <div class="feature-content">
+            <div class="feature-icon">
+              <n-icon size="48" color="#7C4DFF">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10s10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8s8 3.6 8 8s-3.6 8-8 8zm.5-13H11v6l5.2 3.2l.8-1.3l-4.5-2.7V7z"/>
+                </svg>
+              </n-icon>
+            </div>
+            <h3 class="feature-title">AI 发展历史</h3>
+            <p class="feature-description">探索人工智能从理论萌芽到现代应用的发展历程，了解AI技术的关键里程碑和突破性时刻。</p>
           </div>
-        </InfoCard>
+        </div>
+        
+        <div class="feature-block secondary-feature" @click="$router.push('/ai-knowledge')">
+          <div class="feature-content">
+            <div class="feature-icon">
+              <n-icon size="48" color="#7C4DFF">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M12 2L2 7l10 5l10-5l-10-5zm0 10L2 7v10l10 5l10-5V7l-10 5zm0 10l-9-4.5v-5l9 4.5l9-4.5v5l-9 4.5z"/>
+                </svg>
+              </n-icon>
+            </div>
+            <h3 class="feature-title">核心 AI 知识</h3>
+            <p class="feature-description">了解人工智能的基本概念和技术原理</p>
+          </div>
+        </div>
+        
+        <div class="feature-block secondary-feature" @click="$router.push('/llm-platforms')">
+          <div class="feature-content">
+            <div class="feature-icon">
+              <n-icon size="48" color="#7C4DFF">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M20 3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14H4v-5h7v5zm0-7H4V7h7v3zm9 7h-7v-8h7v8z"/>
+                </svg>
+              </n-icon>
+            </div>
+            <h3 class="feature-title">AI 平台导航</h3>
+            <p class="feature-description">探索和访问各种强大的 AI 语言模型平台</p>
+          </div>
+        </div>
+        
+        <div class="feature-block tertiary-feature" @click="$router.push('/about-ai')">
+          <div class="feature-content">
+            <div class="feature-icon">
+              <n-icon size="48" color="#7C4DFF">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M12 2c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2zm0 18c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8zm1-13h-2v6h2V7zm0 8h-2v2h2v-2z"/>
+                </svg>
+              </n-icon>
+            </div>
+            <h3 class="feature-title">关于 AI</h3>
+            <p class="feature-description">全面了解人工智能领域</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { NIcon } from 'naive-ui';
-import InfoCard from '../components/cards/InfoCard.vue';
+import { NIcon, NButton } from 'naive-ui';
+import Navigation from '../components/layout/Navigation.vue';
 </script>
 
 <style scoped>
-.home-container {
+.home-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding-top: 70px; /* Add padding for fixed navigation */
+}
+
+.hero-section {
+  min-height: 500px;
+  height: calc(100vh - 70px);
+  max-height: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 0 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+  pointer-events: none;
+}
+
+.hero-content {
+  max-width: 800px;
+  text-align: center;
+  color: white;
+  z-index: 1;
+  padding: 0 20px;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(to right, #ffffff, #c3cfe2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fadeInUp 1s ease;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  animation: fadeInUp 1s ease 0.2s both;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  animation: fadeInUp 1s ease 0.4s both;
+}
+
+.primary-button {
+  background: linear-gradient(90deg, #7C4DFF 0%, #43A0FF 100%);
+  border: none;
+  border-radius: 30px;
+  padding: 0 32px;
+  height: 50px;
+  font-size: 1rem;
+}
+
+.secondary-button {
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 30px;
+  padding: 0 32px;
+  height: 50px;
+  font-size: 1rem;
+}
+
+.features-section {
   padding: 60px 20px;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-.hero-section {
+.section-header {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 
-.hero-title {
-  font-size: 3rem;
-  margin-bottom: 16px;
-  color: var(--primary-color);
+.section-title {
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  color: #333;
+  margin-bottom: 1rem;
 }
 
-.hero-subtitle {
-  font-size: 1.3rem;
+.section-subtitle {
+  font-size: clamp(1rem, 3vw, 1.2rem);
   color: #666;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-.cards-container {
+/* Mosaic Layout */
+.mosaic-layout {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 40px;
-  margin-top: 40px;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto auto;
+  grid-gap: 20px;
 }
 
-.card-wrapper {
-  height: 100%;
-}
-
-.card-icon {
+.feature-block {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
   display: flex;
-  justify-content: center;
-  margin-bottom: 24px;
-  color: var(--primary-color);
+  flex-direction: column;
+}
+
+.feature-block:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.main-feature {
+  grid-column: span 6;
+  grid-row: span 2;
+}
+
+.secondary-feature {
+  grid-column: span 6;
+  grid-row: span 1;
+}
+
+.tertiary-feature {
+  grid-column: span 6;
+  grid-row: span 1;
+}
+
+.feature-content {
+  padding: 30px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.feature-icon {
+  margin-bottom: 20px;
+}
+
+.feature-title {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+  color: #333;
+}
+
+.feature-description {
+  color: #666;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .main-feature {
+    grid-column: span 12;
+  }
+  
+  .secondary-feature {
+    grid-column: span 6;
+  }
+  
+  .tertiary-feature {
+    grid-column: span 6;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 400px;
+    padding: 80px 0;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+  
+  .secondary-button,
+  .primary-button {
+    width: 100%;
+  }
+  
+  .features-section {
+    padding: 40px 20px;
+  }
+  
+  .mosaic-layout {
+    grid-template-columns: 1fr;
+  }
+  
+  .main-feature,
+  .secondary-feature,
+  .tertiary-feature {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  
+  .feature-content {
+    padding: 20px;
+  }
 }
 </style> 

@@ -1,9 +1,18 @@
 <script setup>
-import { NConfigProvider, NMessageProvider } from 'naive-ui';
+import { NConfigProvider, NMessageProvider, darkTheme } from 'naive-ui';
+import { provide, ref } from 'vue';
+
+const theme = ref(null); // Use null for light theme or darkTheme for dark mode
+
+// Global theme variables
+provide('themeVars', {
+  primaryColor: '#7C4DFF',
+  secondaryColor: '#43A0FF'
+});
 </script>
 
 <template>
-  <n-config-provider>
+  <n-config-provider :theme="theme">
     <n-message-provider>
       <router-view />
     </n-message-provider>
@@ -12,10 +21,11 @@ import { NConfigProvider, NMessageProvider } from 'naive-ui';
 
 <style>
 :root {
-  --primary-color: #1890ff;
-  --background-color: #f5f7fa;
-  --text-color: #333;
-  --border-color: #eaeaea;
+  --primary-color: #7C4DFF;
+  --secondary-color: #43A0FF;
+  --dark-color: #1A0B33;
+  --light-color: #f5f7fa;
+  --gradient-primary: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
 }
 
 * {
@@ -24,82 +34,43 @@ import { NConfigProvider, NMessageProvider } from 'naive-ui';
   box-sizing: border-box;
 }
 
-body {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background-color: var(--background-color);
-  color: var(--text-color);
-  line-height: 1.6;
+html, body {
+  font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #333;
+  font-size: 16px;
+  scroll-behavior: smooth;
 }
 
-.app-container {
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+.container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 0 20px;
 }
 
-.header {
-  text-align: center;
-  padding: 30px 0;
-  margin-bottom: 30px;
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.header h1 {
-  font-size: 2.5rem;
-  color: var(--primary-color);
+.page-transition-enter-active,
+.page-transition-leave-active {
+  transition: opacity 0.3s ease;
 }
 
-.content {
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-}
-
-.introduction {
-  margin-bottom: 40px;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 20px;
-}
-
-.chapter {
-  margin-bottom: 40px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.chapter:last-child {
-  border-bottom: none;
-}
-
-h2 {
-  font-size: 1.8rem;
-  color: var(--primary-color);
-  margin-bottom: 15px;
-}
-
-h3 {
-  font-size: 1.3rem;
-  margin: 20px 0 10px;
-}
-
-p {
-  margin-bottom: 15px;
-}
-
-ul {
-  margin-left: 20px;
-  margin-bottom: 15px;
-}
-
-li {
-  margin-bottom: 5px;
-}
-
-.footer {
-  text-align: center;
-  padding: 20px 0;
-  margin-top: 30px;
-  font-size: 0.9rem;
-  color: #666;
+.page-transition-enter-from,
+.page-transition-leave-to {
+  opacity: 0;
 }
 </style>

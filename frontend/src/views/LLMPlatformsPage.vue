@@ -1,63 +1,111 @@
 <template>
-  <div class="platforms-container">
+  <div class="platforms-page">
+    <Navigation />
+    
     <div class="page-header">
-      <n-button quaternary @click="$router.push('/about-ai')">
-        <template #icon>
-          <n-icon>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <path fill="currentColor" d="M19 11H7.14l3.63-4.36a1 1 0 1 0-1.54-1.28l-5 6a1.19 1.19 0 0 0-.09.15c0 .05 0 .08-.07.13A1 1 0 0 0 4 12a1 1 0 0 0 .07.36c0 .05 0 .08.07.13a1.19 1.19 0 0 0 .09.15l5 6A1 1 0 0 0 10 19a1 1 0 0 0 .77-1.64L7.14 13H19a1 1 0 0 0 0-2z"/>
-            </svg>
-          </n-icon>
-        </template>
-        返回
-      </n-button>
-      <h1 class="page-title">AI 平台导航</h1>
-      <p class="page-subtitle">探索和访问各种强大的 AI 语言模型平台</p>
+      <div class="container">
+        <h1 class="page-title">AI 平台导航</h1>
+        <p class="page-subtitle">探索和访问各种强大的 AI 语言模型平台</p>
+      </div>
     </div>
     
-    <div class="content">
+    <div class="container main-content">
+      <div class="intro-section">
+        <div class="intro-content">
+          <h2>大型语言模型平台</h2>
+          <p>大型语言模型（LLM）已经成为人工智能领域的关键技术，为自然语言理解和生成提供了强大能力。这里我们汇集了当前最先进的AI平台，帮助您探索和体验不同的AI能力。</p>
+        </div>
+      </div>
+      
       <LLMPlatforms />
     </div>
   </div>
 </template>
 
 <script setup>
-import { NIcon, NButton } from 'naive-ui';
+import Navigation from '../components/layout/Navigation.vue';
 import LLMPlatforms from '../components/LLMPlatforms.vue';
 </script>
 
 <style scoped>
-.platforms-container {
-  padding: 40px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
+.platforms-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding-top: 70px; /* Add padding for fixed navigation */
 }
 
 .page-header {
-  margin-bottom: 40px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 40px 0;
+  color: white;
+  text-align: center;
 }
 
 .page-title {
-  font-size: 2.5rem;
-  color: var(--primary-color);
-  margin-top: 20px;
-  text-align: center;
-  margin-bottom: 16px;
+  font-size: clamp(2rem, 6vw, 3rem);
+  margin-bottom: 1rem;
+  background: linear-gradient(to right, #ffffff, #c3cfe2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .page-subtitle {
-  text-align: center;
-  color: #666;
-  font-size: 1.2rem;
-  max-width: 700px;
+  font-size: clamp(0.9rem, 3vw, 1.2rem);
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0.9;
+  padding: 0 20px;
+}
+
+.main-content {
+  padding: 40px 20px 60px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
-.content {
-  margin-top: 40px;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+.intro-section {
+  margin-bottom: 40px;
+}
+
+.intro-content {
+  background: white;
+  border-radius: 12px;
+  padding: 25px 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.intro-content h2 {
+  font-size: clamp(1.5rem, 4vw, 1.8rem);
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.intro-content p {
+  color: #666;
+  line-height: 1.7;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    padding: 30px 0;
+  }
+  
+  .intro-content {
+    padding: 20px 15px;
+  }
+  
+  .main-content {
+    padding: 30px 15px 50px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .main-content {
+    padding: 40px 30px 60px;
+  }
 }
 </style> 
