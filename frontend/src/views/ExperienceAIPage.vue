@@ -20,15 +20,11 @@
         AI体验功能正在开发中，敬请期待...
       </n-alert>
     </div>
-    
-    <!-- AI助手悬浮组件 -->
-    <AIAssistantFloat />
   </div>
 </template>
 
 <script setup>
 import { NIcon, NButton, NAlert } from 'naive-ui';
-import AIAssistantFloat from '../components/AIAssistantFloat.vue';
 </script>
 
 <style scoped>

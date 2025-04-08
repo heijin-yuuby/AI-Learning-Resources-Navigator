@@ -2,7 +2,7 @@
   <nav class="navigation">
     <div class="nav-container">
       <div class="nav-logo">
-        <router-link to="/" class="logo-link">AI Knowledge</router-link>
+        <router-link to="/" class="logo-link">AI Navigator</router-link>
       </div>
       
       <div class="nav-mobile-toggle" @click="toggleMobileMenu">

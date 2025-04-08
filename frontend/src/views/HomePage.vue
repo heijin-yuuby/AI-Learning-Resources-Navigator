@@ -4,7 +4,7 @@
     
     <div class="hero-section">
       <div class="hero-content">
-        <h1 class="hero-title">AI Knowledge</h1>
+        <h1 class="hero-title">AI Navigator</h1>
         <p class="hero-subtitle">探索人工智能的无限可能，了解前沿技术</p>
         <div class="hero-buttons">
           <n-button type="primary" size="large" class="primary-button" @click="$router.push('/about-ai')">
