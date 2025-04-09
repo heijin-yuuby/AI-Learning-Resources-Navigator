@@ -5,7 +5,7 @@
   --primary-hover-gradient: linear-gradient(135deg, #2A5880 0%, #1F466B 100%);
   
   /* 背景色 */
-  --bg-primary: #FFFFFF;
+  --bg-primary: #eee0bd;
   --bg-secondary: #F9F7F2;
   --bg-tertiary: #F5E6BF;
   
@@ -69,6 +69,8 @@
   --font-size-xl: 1.5rem;
   --font-size-xxl: 2rem;
   --font-size-xxxl: 3rem;
+  /*按钮效果*/
+  --button-hover-color:var(var(--accent-yellow))
 }
 
 /* 基础样式重置 */
@@ -247,4 +249,27 @@ button, .btn {
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
   }
+}
+
+/* 按钮悬停效果覆盖 */
+.n-button.primary-button:hover {
+  background: rgba(251, 242, 242, 0.1) !important;
+  border-color: var(--text-light) !important;
+}
+
+.n-button.primary-button {
+  background: transparent !important;
+  border: 2px solid var(--text-light) !important;
+  color: var(--text-light) !important;
+}
+
+.n-button.secondary-button {
+  background: transparent !important;
+  border: 2px solid var(--text-light) !important;
+  color: var(--text-light) !important;
+}
+
+.n-button.secondary-button:hover {
+  background: rgba(251, 242, 242, 0.1) !important;
+  border-color: var(--text-light) !important;
 } 

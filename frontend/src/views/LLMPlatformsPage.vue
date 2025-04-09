@@ -2,9 +2,9 @@
   <div class="platforms-page">
     <Navigation />
     
-    <div class="page-header">
+    <div class="page-header">   
       <div class="container">
-        <h1 class="page-title">AI 平台导航</h1>
+        <h1 class="page-title">LLM平台导航</h1>
         <p class="page-subtitle">探索和访问各种强大的 AI 语言模型平台</p>
       </div>
     </div>
@@ -12,7 +12,7 @@
     <div class="container main-content">
       <div class="intro-section">
         <div class="intro-content">
-          <h2>大型语言模型平台</h2>
+          <h2>LLM平台导航</h2>
           <p>大型语言模型（LLM）已经成为人工智能领域的关键技术，为自然语言理解和生成提供了强大能力。这里我们汇集了当前最先进的AI平台，帮助您探索和体验不同的AI能力。</p>
         </div>
       </div>
@@ -44,9 +44,8 @@ import LLMPlatforms from '../components/LLMPlatforms.vue';
 .page-title {
   font-size: clamp(2rem, 6vw, 3rem);
   margin-bottom: 1rem;
-  background: linear-gradient(to right, var(--text-primary), var(--text-secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--text-light);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .page-subtitle {

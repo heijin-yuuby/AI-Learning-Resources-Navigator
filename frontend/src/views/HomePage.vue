@@ -7,7 +7,7 @@
         <h1 class="hero-title">AI Navigator</h1>
         <p class="hero-subtitle">探索人工智能的无限可能，了解前沿技术</p>
         <div class="hero-buttons">
-          <n-button type="primary" size="large" class="primary-button" @click="$router.push('/about-ai')">
+          <n-button type="primary" size="large" class="primary-button" @click="$router.push('/about-ai')" color="#1F466B">
             了解 AI
           </n-button>
           <n-button text size="large" class="secondary-button" @click="$router.push('/llm-platforms')">
@@ -123,25 +123,24 @@ import Navigation from '../components/layout/Navigation.vue';
 .hero-content {
   max-width: 800px;
   text-align: center;
-  color: white;
+  color: rgb(247, 241, 241);
   z-index: 1;
   padding: 0 20px;
 }
 
 .hero-title {
   font-size: clamp(2.5rem, 8vw, 4rem);
+  color: var(--bg-primary);
   font-weight: 700;
   margin-bottom: 1rem;
-  background: linear-gradient(to right, var(--text-primary), var(--text-secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 4px rgba(22, 19, 19, 0.2);
   animation: fadeInUp 1s ease;
 }
 
 .hero-subtitle {
   font-size: clamp(1rem, 4vw, 1.5rem);
   margin-bottom: 2rem;
-  color: var(--text-light);
+  color: var(--bg-primary);
   animation: fadeInUp 1s ease 0.2s both;
 }
 
@@ -159,6 +158,13 @@ import Navigation from '../components/layout/Navigation.vue';
   padding: 0 32px;
   height: 50px;
   font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.primary-button:hover {
+  background:rgb(91, 78, 78);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .secondary-button {
@@ -168,6 +174,12 @@ import Navigation from '../components/layout/Navigation.vue';
   padding: 0 32px;
   height: 50px;
   font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.secondary-button:hover {
+  background: rgba(251, 242, 242, 0.971);
+  transform: translateY(-2px);
 }
 
 .features-section {

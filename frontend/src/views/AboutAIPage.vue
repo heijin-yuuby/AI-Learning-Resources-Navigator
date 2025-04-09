@@ -37,7 +37,7 @@
               <path fill="currentColor" d="M20 3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14H4v-5h7v5zm0-7H4V7h7v3zm9 7h-7v-8h7v8z"/>
             </svg>
           </n-icon>
-          <h3>AI平台导航</h3>
+          <h3>LLM平台导航</h3>
           <p>探索和访问各种强大的AI语言模型平台</p>
         </div>
       </div>
@@ -45,7 +45,11 @@
       <div class="content-grid">
         <div class="ai-intro">
           <h2>什么是人工智能？</h2>
-          <p>人工智能（Artificial Intelligence，简称AI）是指由人类创造的计算机系统，它们能够执行通常需要人类智能才能完成的任务。这些任务包括视觉感知、语音识别、决策制定、语言翻译以及从数据中学习等。</p>
+          <p>人工智能（Artificial Intelligence）是指由人类创造的计算机系统</p>
+          <br>
+          <p>它们能够执行通常需要人类智能才能完成的任务</p>
+          <br>
+          <p>这些任务包括视觉感知、语音识别、决策制定、语言翻译以及从数据中学习等。</p>
         </div>
         
         <div class="branch-section">
