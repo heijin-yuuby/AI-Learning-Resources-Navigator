@@ -25,7 +25,7 @@
       </div>
       
       <div class="mosaic-layout">
-        <div class="feature-block secondary-feature" @click="$router.push('/ai-history')">
+        <div class="feature-block secondary-feature" @click="$router.push('/ai-history')" ref="historyCard">
           <div class="feature-content">
             <div class="feature-icon">
               <n-icon size="48" color="var(--primary-color)">
@@ -39,7 +39,7 @@
           </div>
         </div>
         
-        <div class="feature-block secondary-feature" @click="$router.push('/ai-knowledge')">
+        <div class="feature-block secondary-feature" @click="$router.push('/ai-knowledge')" ref="knowledgeCard">
           <div class="feature-content">
             <div class="feature-icon">
               <n-icon size="48" color="var(--primary-color)">
@@ -53,7 +53,7 @@
           </div>
         </div>
         
-        <div class="feature-block secondary-feature" @click="$router.push('/llm-platforms')">
+        <div class="feature-block secondary-feature" @click="$router.push('/llm-platforms')" ref="platformsCard">
           <div class="feature-content">
             <div class="feature-icon">
               <n-icon size="48" color="var(--primary-color)">
@@ -67,7 +67,7 @@
           </div>
         </div>
         
-        <div class="feature-block tertiary-feature" @click="$router.push('/about-ai')">
+        <div class="feature-block tertiary-feature" @click="$router.push('/about-ai')" ref="aboutCard">
           <div class="feature-content">
             <div class="feature-icon">
               <n-icon size="48" color="var(--primary-color)">
@@ -88,6 +88,37 @@
 <script setup>
 import { NIcon, NButton } from 'naive-ui';
 import Navigation from '../components/layout/Navigation.vue';
+import { ref, onMounted } from 'vue';
+
+// References to the feature cards
+const historyCard = ref(null);
+const knowledgeCard = ref(null);
+const platformsCard = ref(null);
+const aboutCard = ref(null);
+
+onMounted(() => {
+  // Create an Intersection Observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      // When the element is in view
+      if (entry.isIntersecting) {
+        // Add the animation class
+        entry.target.classList.add('animate-float-up');
+        // Unobserve after animation is triggered
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.2, // Trigger when 20% of the element is visible
+    rootMargin: '0px 0px -50px 0px' // Adjust when the animation triggers
+  });
+
+  // Observe each card with a slight delay between them
+  setTimeout(() => observer.observe(historyCard.value), 100);
+  setTimeout(() => observer.observe(knowledgeCard.value), 300);
+  setTimeout(() => observer.observe(platformsCard.value), 500);
+  setTimeout(() => observer.observe(aboutCard.value), 700);
+});
 </script>
 
 <style scoped>
@@ -269,17 +300,6 @@ import Navigation from '../components/layout/Navigation.vue';
   color: var(--text-secondary);
   line-height: 1.6;
   flex-grow: 1;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 /* Responsive Adjustments */

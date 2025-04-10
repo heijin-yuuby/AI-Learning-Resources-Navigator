@@ -39,7 +39,7 @@ import KeywordsBubble from '../components/cards/KeywordsBubble.vue';
 
 .page-title {
   font-size: 2.5rem;
-  color: var(--text-primary);
+  color: var(--accent-yellow);
   margin-top: 20px;
   text-align: center;
   margin-bottom: 16px;
@@ -47,7 +47,7 @@ import KeywordsBubble from '../components/cards/KeywordsBubble.vue';
 
 .page-subtitle {
   text-align: center;
-  color: var(--text-secondary);
+  color: var(--accent-yellow);
   font-size: 1.2rem;
   max-width: 700px;
   margin: 0 auto;
