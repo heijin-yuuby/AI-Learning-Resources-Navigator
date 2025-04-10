@@ -64,6 +64,7 @@ const navigateToLLMPlatforms = () => {
   left: 0;
   z-index: 1000;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  font-family: var(--font-styrene-b);
 }
 
 .nav-container {
@@ -80,6 +81,7 @@ const navigateToLLMPlatforms = () => {
   font-size: var(--font-size-xl);
   font-weight: 700;
   z-index: 1001;
+  font-family: var(--font-styrene-b);
 }
 
 .logo-link {

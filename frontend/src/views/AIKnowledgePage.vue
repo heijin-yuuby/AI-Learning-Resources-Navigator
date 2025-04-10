@@ -16,7 +16,7 @@
     </div>
     
     <div class="content">
-      <KeywordsBubble />
+      <KeywordsBubble ref="bubbleRef" />
     </div>
   </div>
 </template>
@@ -24,6 +24,50 @@
 <script setup>
 import { NIcon, NButton } from 'naive-ui';
 import KeywordsBubble from '../components/cards/KeywordsBubble.vue';
+import { ref, onMounted } from 'vue';
+
+// 引用气泡组件
+const bubbleRef = ref(null);
+
+onMounted(() => {
+  // 在组件挂载时为气泡添加初始状态类
+  setTimeout(() => {
+    const bubbles = document.querySelectorAll('.keyword-bubble');
+    bubbles.forEach(bubble => {
+      bubble.classList.add('bubble-ready');
+    });
+    
+    // 创建 Intersection Observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        // 当元素进入视图时
+        if (entry.isIntersecting) {
+          // 获取所有气泡
+          const bubbles = document.querySelectorAll('.keyword-bubble');
+          
+          // 为每个气泡添加动画，错开执行
+          bubbles.forEach((bubble, index) => {
+            setTimeout(() => {
+              bubble.classList.remove('bubble-ready');
+              bubble.classList.add('bubble-active');
+            }, 120 * index);
+          });
+          
+          // 动画触发后停止观察
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.2,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    // 观察气泡组件
+    if (bubbleRef.value) {
+      observer.observe(bubbleRef.value.$el);
+    }
+  }, 0); // 使用setTimeout确保DOM已完全渲染
+});
 </script>
 
 <style scoped>

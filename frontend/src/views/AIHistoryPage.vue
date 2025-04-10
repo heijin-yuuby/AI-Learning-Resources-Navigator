@@ -16,7 +16,7 @@
     </div>
     
     <div class="content">
-      <AITimeline />
+      <AITimeline ref="timelineRef" />
     </div>
   </div>
 </template>
@@ -24,6 +24,50 @@
 <script setup>
 import { NIcon, NButton } from 'naive-ui';
 import AITimeline from '../components/timeline/AITimeline.vue';
+import { ref, onMounted } from 'vue';
+
+// 引用时间线组件
+const timelineRef = ref(null);
+
+onMounted(() => {
+  // 在组件挂载时为时间线项目添加初始状态类
+  setTimeout(() => {
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    timelineItems.forEach(item => {
+      item.classList.add('timeline-item-ready');
+    });
+    
+    // 创建 Intersection Observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        // 当元素进入视图时
+        if (entry.isIntersecting) {
+          // 获取所有时间线项目
+          const timelineItems = document.querySelectorAll('.timeline-item');
+          
+          // 为每个项目添加动画，错开执行
+          timelineItems.forEach((item, index) => {
+            setTimeout(() => {
+              item.classList.remove('timeline-item-ready');
+              item.classList.add('timeline-item-active');
+            }, 150 * index);
+          });
+          
+          // 动画触发后停止观察
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.2,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    // 观察时间线组件
+    if (timelineRef.value) {
+      observer.observe(timelineRef.value.$el);
+    }
+  }, 0); // 使用setTimeout确保DOM已完全渲染
+});
 </script>
 
 <style scoped>
