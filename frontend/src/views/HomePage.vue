@@ -5,7 +5,8 @@
     <div class="hero-section">
       <div class="hero-content">
         <h1 class="hero-title">AI Navigator</h1>
-        <p class="hero-subtitle">探索人工智能的无限可能，了解前沿技术</p>
+        <p class="hero-subtitle">Explore the infinite possibilities of artificial intelligence 
+          <br>learn about cutting-edge technologies</p>
         <div class="hero-buttons">
           <n-button type="primary" size="large" class="primary-button" @click="$router.push('/about-ai')" color="#1F466B">
             了解 AI
@@ -24,7 +25,7 @@
       </div>
       
       <div class="mosaic-layout">
-        <div class="feature-block main-feature" @click="$router.push('/ai-history')">
+        <div class="feature-block secondary-feature" @click="$router.push('/ai-history')">
           <div class="feature-content">
             <div class="feature-icon">
               <n-icon size="48" color="var(--primary-color)">
