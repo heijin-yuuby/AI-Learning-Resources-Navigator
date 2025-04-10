@@ -1,3 +1,8 @@
+/* 
+  这个组件用于展示LLM平台，包括平台名称、描述、功能标签、访问按钮和查看文档按钮。
+  它使用Naive UI的组件库来实现。
+*/
+
 <template>
   <div class="llm-platforms">
     <div class="platforms-grid">
@@ -22,7 +27,7 @@
               访问平台
             </n-button>
             <n-button v-if="platform.docsUrl" text @click="navigateTo(platform.docsUrl)" class="docs-button">
-              查看文档
+              官方文档
             </n-button>
           </div>
         </div>
@@ -60,27 +65,11 @@ const platforms= [
     features: ['长文本处理', '学术写作', '代码分析', '安全可靠']
   },
   {
-    name: 'Hugging Face',
-    url: 'https://huggingface.co',
-    docsUrl: 'https://huggingface.co/docs',
-    image: '/src/assets/images/huggingface.png',
-    description: '领先的开源 AI 模型平台，提供数千个预训练模型和数据集。支持模型训练、部署和分享，是 AI 开发者的重要社区。',
-    features: ['开源模型', '模型训练', '社区分享', 'API 部署']
-  },
-  {
     name: 'Perplexity AI',
     url: 'https://www.perplexity.ai',
     image: '/src/assets/images/perplexity.png',
     description: '基于实时网络搜索的 AI 问答平台，能够提供最新、最准确的信息。结合了搜索引擎和 AI 对话的优势，适合需要最新信息的查询。',
     features: ['实时搜索', '信息溯源', '多源整合', '快速响应']
-  },
-  {
-    name: 'Grok',
-    url: 'https://grok.x.ai',
-    docsUrl: 'https://grok.x.ai/faq',
-    image: '/src/assets/images/grok.png',
-    description: 'X开发的AI助手，以其幽默、直率和广泛的知识库著称。擅长回答各类问题，并能访问实时信息。',
-    features: ['实时信息', '幽默对话', '创意生成', '网络搜索']
   },
   {
     name:'Deepseek R1',
@@ -89,6 +78,14 @@ const platforms= [
     image:'/src/assets/images/deepseek.png',
     description:'深度求索推出的拥有强大的内容推理能力，在数学、代码、自然语言推理等任务上性能与 OpenAI o1 正式版相当',
     features:['内容推理','理解能力','代码能力','写作辅助','开源']
+  },
+  {
+    name:'Qwen 2.5',
+    url:'https://chat.qwen.ai/',
+    docsUrl:'https://github.com/QwenLM/Qwen/blob/main/README_CN.md',
+    image:'/src/assets/images/qwen.png',
+    description:'阿里巴巴推出的新一代大语言模型，具有更强的推理能力和更丰富的知识库。它支持多模态输入，能够处理图像、音频和视频等',
+    features:['内容推理','理解能力','代码能力','写作辅助','开源','多模态']
   }
 ];
 
@@ -226,8 +223,8 @@ const navigateTo = (url) => {
 }
 
 .visit-button {
-  background: linear-gradient(90deg, #7C4DFF 0%, #43A0FF 100%);
-  border: none;
+  background: linear-gradient(90deg, #2a3883 0%, #2e6cab 100%);
+  border: color(#2a3883);
   border-radius: 20px;
   flex: 1;
 }

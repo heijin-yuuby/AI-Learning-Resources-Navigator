@@ -4,7 +4,7 @@
     
     <div class="page-header">   
       <div class="container">
-        <h1 class="page-title">LLM平台导航</h1>
+        <h1 class="page-title">LLM Platforms Navigation</h1>
         <p class="page-subtitle">探索和访问各种强大的 AI 语言模型平台</p>
       </div>
     </div>
@@ -12,19 +12,31 @@
     <div class="container main-content">
       <div class="intro-section">
         <div class="intro-content">
-          <h2>LLM平台导航</h2>
-          <p>大型语言模型（LLM）已经成为人工智能领域的关键技术，为自然语言理解和生成提供了强大能力。这里我们汇集了当前最先进的AI平台，帮助您探索和体验不同的AI能力。</p>
+          <h2>体验各大LLM</h2>
+          <p>时下的，先进的，你需要知道的LLM平台</p>
         </div>
       </div>
       
       <LLMPlatforms />
+      <br>
+      <div class="container main-content">
+        <div class="intro-section">
+          <div class="intro-content">
+            <h2>如果你想了解AI开发...</h2>
+            <p>我们有相关的集成平台</p>
+          </div>
+        </div>
+        <LLMintegrationplatform />
+      </div>
     </div>
-  </div>
-</template>
+    </div>
+    </template>
+
 
 <script setup>
 import Navigation from '../components/layout/Navigation.vue';
 import LLMPlatforms from '../components/LLMPlatforms.vue';
+import LLMintegrationplatform from '../components/LLMintegrationplatform.vue';
 </script>
 
 <style scoped>
