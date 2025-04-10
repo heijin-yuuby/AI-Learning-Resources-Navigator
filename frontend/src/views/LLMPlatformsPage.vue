@@ -9,6 +9,9 @@
       </div>
     </div>
     
+    
+    
+    <br>
     <div class="container main-content">
       <div class="intro-section">
         <div class="intro-content">
@@ -40,5 +43,5 @@ import '../assets/styles/platforms.css';
 </script>
 
 <style scoped>
-/* 组件特定的样式已移至 assets/styles/platforms.css */
+
 </style> 
