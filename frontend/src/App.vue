@@ -1,7 +1,7 @@
 <script setup>
 import { NConfigProvider, NMessageProvider, darkTheme } from 'naive-ui';
 import { provide, ref } from 'vue';
-import './assets/main.css';
+// 样式已在 main.js 中导入
 
 // Set theme based on system preference (null for light, darkTheme for dark)
 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;

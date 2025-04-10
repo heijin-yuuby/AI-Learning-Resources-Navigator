@@ -1,0 +1,297 @@
+/* LLM 平台页面样式 */
+
+/* 字体设置 */
+.llm-pages {
+  font-family: "Microsoft YaHei", -apple-system, BlinkMacSystemFont, "微软雅黑", sans-serif;
+}
+
+/* 页面布局 */
+.platforms-page {
+  min-height: 100vh;
+  background: var(--bg-primary);
+  padding-top: 70px; /* 为固定导航添加padding */
+}
+
+/* 页面头部 */
+.page-header {
+  background: var(--primary-gradient);
+  padding: 40px 0;
+  color: var(--text-light);
+  text-align: center;
+}
+
+.page-title {
+  font-size: clamp(2rem, 6vw, 3rem);
+  margin-bottom: 1rem;
+  color: var(--text-light);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.page-subtitle {
+  font-size: clamp(0.9rem, 3vw, 1.2rem);
+  max-width: 600px;
+  margin: 0 auto;
+  color: var(--text-light);
+  padding: 0 20px;
+}
+
+/* 内容区域 */
+.main-content {
+  padding: 40px 20px 60px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* 介绍部分 */
+.intro-section {
+  margin-bottom: 40px;
+}
+
+.intro-content {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 25px 20px;
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.intro-content h2 {
+  font-size: clamp(1.5rem, 4vw, 1.8rem);
+  color: var(--text-primary);
+  margin-bottom: 15px;
+}
+
+.intro-content p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+}
+
+/* 平台卡片部分 */
+.llm-platforms {
+  padding: 20px 0;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.platforms-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 24px;
+  margin: 0 auto;
+}
+
+.platform-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.platform-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.card-content {
+  padding: 24px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-large {
+  grid-column: span 6;
+  grid-row: span 2;
+}
+
+.card-medium {
+  grid-column: span 4;
+  grid-row: span 2;
+}
+
+.card-medium-tall {
+  grid-column: span 4;
+  grid-row: span 2;
+}
+
+.card-small {
+  grid-column: span 3;
+  grid-row: span 1;
+}
+
+.platform-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.logo-container {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 12px;
+  padding: 8px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.platform-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.platform-name {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.platform-description {
+  margin: 0 0 20px 0;
+  color: #4a5568;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-large .platform-description,
+.card-medium-tall .platform-description {
+  -webkit-line-clamp: 5;
+}
+
+.platform-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.feature-tag {
+  margin-right: 0;
+  white-space: nowrap;
+  border-radius: 6px;
+}
+
+.platform-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.visit-button {
+  background: linear-gradient(135deg, #2a3883 0%, #2e6cab 100%);
+  border: none;
+  border-radius: 8px;
+  flex: 1;
+  height: 40px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.visit-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(42, 56, 131, 0.2);
+}
+
+.docs-button {
+  color: var(--primary-color);
+  height: 40px;
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+  .platforms-grid {
+    grid-gap: 20px;
+  }
+  
+  .card-large {
+    grid-column: span 6;
+  }
+  
+  .card-medium, 
+  .card-medium-tall,
+  .card-small {
+    grid-column: span 4;
+  }
+}
+
+@media (max-width: 900px) {
+  .platforms-grid {
+    grid-gap: 16px;
+  }
+  
+  .card-large,
+  .card-medium, 
+  .card-medium-tall,
+  .card-small {
+    grid-column: span 6;
+    grid-row: span 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    padding: 30px 0;
+  }
+  
+  .intro-content {
+    padding: 20px 15px;
+  }
+  
+  .main-content {
+    padding: 30px 15px 50px;
+  }
+}
+
+@media (max-width: 600px) {
+  .llm-platforms {
+    padding: 16px;
+  }
+  
+  .platforms-grid {
+    grid-template-columns: 1fr;
+    grid-gap: 16px;
+  }
+  
+  .platform-card {
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
+  }
+  
+  .platform-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .visit-button, 
+  .docs-button {
+    width: 100%;
+  }
+  
+  .card-content {
+    padding: 16px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .main-content {
+    padding: 40px 30px 60px;
+  }
+} 
