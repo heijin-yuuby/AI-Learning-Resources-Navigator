@@ -4,14 +4,17 @@ This project is a web application built with Vue.js that provides easy navigatio
 
 ## development process
 
-[x] home page
-[x] about ai page
-[x] llm platforms page
-[x] timeline page
-[x] core ai knowledge Page
-[x] router setup
-[x] navigation bar
-[ ] optimize ui design
+- [x] home page
+
+- [x] about ai page
+
+- [x] llm platforms page
+
+- [x] timeline page
+- [x] core ai knowledge Page
+- [x] router setup
+- [x] navigation bar
+- [ ] optimize ui design
  * [ ]knowledge page
  * [ ]LLM page
 
