@@ -34,7 +34,7 @@
 <script setup>
 import { NButton, NTag } from 'naive-ui';
 
-const platforms = [
+const platforms= [
   {
     name: 'ChatGPT',
     url: 'https://chat.openai.com',
@@ -70,7 +70,7 @@ const platforms = [
   {
     name: 'Perplexity AI',
     url: 'https://www.perplexity.ai',
-    image: '/src/assets/images/5bbeb59b-6362-4a56-b836-4c1a59f24b86.gif',
+    image: '/src/assets/images/perplexity.png',
     description: '基于实时网络搜索的 AI 问答平台，能够提供最新、最准确的信息。结合了搜索引擎和 AI 对话的优势，适合需要最新信息的查询。',
     features: ['实时搜索', '信息溯源', '多源整合', '快速响应']
   },
