@@ -43,7 +43,7 @@
       </div>
       
       <div class="content-grid">
-        <div class="ai-intro">
+        <div class="ai-intro content-card" ref="introCardRef">
           <h2>什么是人工智能？</h2>
           <p>人工智能（Artificial Intelligence）是指由人类创造的计算机系统</p>
           <br>
@@ -52,7 +52,7 @@
           <p>这些任务包括视觉感知、语音识别、决策制定、语言翻译以及从数据中学习等。</p>
         </div>
         
-        <div class="branch-section">
+        <div class="branch-section content-card" ref="branchCardRef">
           <h2>人工智能的主要分支</h2>
           <div class="ai-branches">
             <div class="branch-card">
@@ -84,6 +84,51 @@
 <script setup>
 import { NIcon } from 'naive-ui';
 import Navigation from '../components/layout/Navigation.vue';
+import { ref, onMounted } from 'vue';
+
+// 引用内容卡片
+const introCardRef = ref(null);
+const branchCardRef = ref(null);
+
+onMounted(() => {
+  // 在组件挂载时为内容卡片添加初始状态类
+  setTimeout(() => {
+    setupContentCards();
+  }, 0); // 使用setTimeout确保DOM已完全渲染
+});
+
+// 设置内容卡片的动画
+function setupContentCards() {
+  // 添加初始状态类
+  const contentCards = document.querySelectorAll('.content-card');
+  contentCards.forEach(card => {
+    card.classList.add('content-card-ready');
+  });
+  
+  // 创建 Intersection Observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      // 当元素进入视图时
+      if (entry.isIntersecting) {
+        // 为卡片添加动画
+        setTimeout(() => {
+          entry.target.classList.remove('content-card-ready');
+          entry.target.classList.add('content-card-active');
+        }, 150);
+        
+        // 动画触发后停止观察该元素
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.3,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  // 观察内容卡片
+  if (introCardRef.value) observer.observe(introCardRef.value);
+  if (branchCardRef.value) observer.observe(branchCardRef.value);
+}
 </script>
 
 <style scoped>
@@ -105,7 +150,7 @@ import Navigation from '../components/layout/Navigation.vue';
   margin-bottom: 1rem;
   color: var(--text-light);
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  animation
+  animation: fadeIn 1s ease-in-out;
 }
 
 .page-subtitle {
@@ -114,7 +159,7 @@ import Navigation from '../components/layout/Navigation.vue';
   margin: 0 auto;
   color: var(--text-light);
   padding: 0 20px;
-  animation: fadeIn 1s ease-in-out;
+  animation: fadeIn 1.5s ease-in-out;
 }
 
 .main-content {
@@ -142,7 +187,7 @@ import Navigation from '../components/layout/Navigation.vue';
   display: flex;
   flex-direction: column;
   align-items: center;
-  animation: fadeIn 1.5s ease-in-out;
+  animation: float-up 1s ease-in-out;
 }
 
 .nav-card:hover {
@@ -179,12 +224,14 @@ import Navigation from '../components/layout/Navigation.vue';
   color: var(--text-primary);
   font-size: clamp(1.5rem, 4vw, 1.8rem);
   margin-bottom: 20px;
+  animation: fadeIn 1s ease-in-out;
 }
 
 .ai-intro p {
   color: var(--text-secondary);
   line-height: 1.7;
   font-size: clamp(0.9rem, 2vw, 1rem);
+  animation: fadeIn 1.5s ease-in-out;
 }
 
 .ai-branches {
@@ -199,6 +246,7 @@ import Navigation from '../components/layout/Navigation.vue';
   padding: 20px;
   border-left: 4px solid var(--accent-blue);
   height: 100%;
+  animation: float-up 1s ease-in-out;
 }
 
 .branch-card h3 {

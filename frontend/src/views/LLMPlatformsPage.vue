@@ -106,17 +106,37 @@ function setupPlatformCards(platformType) {
 
 <style scoped>
 /* 页面特定样式 */
+.page-title {
+  font-size: clamp(2rem, 6vw, 3rem);
+  margin-bottom: 1rem;
+  color: var(--text-light);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 1s ease-in-out;
+}
+
+.page-subtitle {
+  font-size: clamp(0.9rem, 3vw, 1.2rem);
+  max-width: 600px;
+  margin: 0 auto;
+  color: var(--text-light);
+  padding: 0 20px;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
 .intro-section {
   margin-bottom: 30px;
+  animation: float-up 1s ease-in-out;
 }
 
 .intro-content h2 {
   font-size: 1.8rem;
   margin-bottom: 10px;
   color: var(--primary-color);
+  animation: fadeIn 1s ease-in-out;
 }
 
 .intro-content p {
   color: var(--text-secondary);
+  animation: fadeIn 1.5s ease-in-out;
 }
 </style> 
