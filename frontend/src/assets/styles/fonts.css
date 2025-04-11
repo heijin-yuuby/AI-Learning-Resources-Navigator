@@ -1,0 +1,27 @@
+/* 
+ * fonts.css
+ * 字体设置和定义
+ */
+
+:root {
+  /* 英文字体变量 */
+  --font-serif-en: 'Tiempos Text', Georgia, 'Times New Roman', Times, serif;
+  --font-sans-serif-en: 'Styrene B', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  
+  /* 中文字体变量 - 使用Microsoft YaHei */
+  --font-serif-cn: 'Microsoft YaHei', '微软雅黑', SimSun, '宋体', serif;
+  --font-sans-serif-cn: 'Microsoft YaHei', '微软雅黑', 'PingFang SC', 'STHeiti', '华文黑体', sans-serif;
+  
+  /* 组合字体栈 */
+  --font-tiempos: var(--font-serif-en), var(--font-serif-cn); /* 正文文本(serif) */
+  --font-styrene-b: var(--font-sans-serif-en), var(--font-sans-serif-cn); /* UI元素(sans-serif) */
+  
+  /* 特殊用途字体 */
+  --font-code: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+}
+
+/* 
+ * 说明:
+ * 1. 英文字体模拟Claude风格
+ * 2. 中文字体使用系统默认的微软雅黑
+ */ 

@@ -12,7 +12,9 @@ provide('themeVars', {
   primaryColor: '#1F466B',
   primaryColorHover: '#2A5880',
   borderRadius: '8px',
-  textColorBase: '#1F466B'
+  textColorBase: '#1F466B',
+  // 为Naive UI组件添加字体
+  fontFamily: 'var(--font-styrene-b)'
 });
 </script>
 
@@ -25,5 +27,12 @@ provide('themeVars', {
 </template>
 
 <style>
-/* All styles moved to assets/main.css */
+/* 全局样式补充 */
+.n-button {
+  font-family: var(--font-styrene-b) !important;
+}
+
+.n-input, .n-select, .n-dropdown {
+  font-family: var(--font-styrene-b) !important;
+}
 </style>
