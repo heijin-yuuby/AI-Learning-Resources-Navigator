@@ -105,6 +105,7 @@ import Navigation from '../components/layout/Navigation.vue';
   margin-bottom: 1rem;
   color: var(--text-light);
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  animation
 }
 
 .page-subtitle {
@@ -113,6 +114,7 @@ import Navigation from '../components/layout/Navigation.vue';
   margin: 0 auto;
   color: var(--text-light);
   padding: 0 20px;
+  animation: fadeIn 1s ease-in-out;
 }
 
 .main-content {
@@ -140,6 +142,7 @@ import Navigation from '../components/layout/Navigation.vue';
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation: fadeIn 1.5s ease-in-out;
 }
 
 .nav-card:hover {
