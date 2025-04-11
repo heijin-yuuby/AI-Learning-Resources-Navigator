@@ -1,4 +1,4 @@
-# AI Learning Resources Navigator | AI 学习资源导航
+# AI Learning Resources Navigator 
 
 <div align="right">
   <a href="#chinese-version">中文</a> | <a href="#english-version">English</a>
