@@ -31,13 +31,14 @@
 /* 平台卡片动画 */
 .platform-card-ready {
   opacity: 0;
-  transform: translateY(50px);
+  transform: translateX(-30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, transform;
 }
 
 .platform-card-active {
   opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateX(0);
 }
 
 /* 时间线项目动画 */

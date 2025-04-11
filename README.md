@@ -15,7 +15,7 @@ This project is a web application built with Vue.js that provides easy navigatio
 - [x] router setup
 - [x] navigation bar
 - [ ] optimize ui design
-  - [ ] knowledge page
+  - [x] knowledge page
   - [ ] LLM page
 
 

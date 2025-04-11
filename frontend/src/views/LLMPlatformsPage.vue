@@ -50,11 +50,16 @@ const llmPlatformsRef = ref(null);
 const integrationPlatformsRef = ref(null);
 
 onMounted(() => {
-  // 在组件挂载时为卡片添加初始状态类
+  // 确保页面加载后立即隐藏所有卡片
+  document.querySelectorAll('.platform-card').forEach(card => {
+    card.style.opacity = '0';
+  });
+  
+  // 给页面充分时间加载所有元素
   setTimeout(() => {
     setupPlatformCards('llm');
     setupPlatformCards('integration');
-  }, 0); // 使用setTimeout确保DOM已完全渲染
+  }, 300); // 增加延迟确保页面完全加载
 });
 
 // 设置平台卡片的初始状态和动画
@@ -66,28 +71,31 @@ function setupPlatformCards(platformType) {
   
   // 添加初始状态类
   cards.forEach(card => {
+    // 移除可能的内联样式
+    card.style.opacity = '';
     card.classList.add('platform-card-ready');
   });
   
-  // 创建 Intersection Observer
+  // 为初始视图中已经可见的卡片手动触发动画
+  const triggerInitialAnimation = () => {
+    // 为每个卡片添加动画，从左到右优雅地错开执行
+    cards.forEach((card, index) => {
+      setTimeout(() => {
+        card.classList.remove('platform-card-ready');
+        card.classList.add('platform-card-active');
+      }, 200 * index); // 间隔时间
+    });
+  };
+  
+  // 立即为可视区域内的卡片触发动画
+  triggerInitialAnimation();
+  
+  // 创建 Intersection Observer 用于处理滚动时进入视图的元素
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      // 当元素进入视图时
+      // 仅处理进入视图的元素
       if (entry.isIntersecting) {
-        // 获取平台组件下的所有卡片
-        const cards = platformType === 'llm' 
-          ? document.querySelectorAll('.llm-platforms:first-of-type .platform-card')
-          : document.querySelectorAll('.llm-platforms:last-of-type .platform-card');
-        
-        // 为每个卡片添加动画，错开执行
-        cards.forEach((card, index) => {
-          setTimeout(() => {
-            card.classList.remove('platform-card-ready');
-            card.classList.add('platform-card-active');
-          }, 100 * index);
-        });
-        
-        // 动画触发后停止观察
+        // 停止观察，避免重复触发
         observer.unobserve(entry.target);
       }
     });
@@ -98,7 +106,7 @@ function setupPlatformCards(platformType) {
 
   // 观察相应的平台组件
   const targetRef = platformType === 'llm' ? llmPlatformsRef : integrationPlatformsRef;
-  if (targetRef.value) {
+  if (targetRef.value && targetRef.value.$el) {
     observer.observe(targetRef.value.$el);
   }
 }
