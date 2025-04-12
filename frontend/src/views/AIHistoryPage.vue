@@ -12,7 +12,7 @@
         返回
       </n-button>
       <h1 class="page-title">AI发展历程</h1>
-      <p class="page-subtitle">想法，尝试，</p>
+      <p class="page-subtitle">想法，尝试</p>
     </div>
     
     <div class="content">

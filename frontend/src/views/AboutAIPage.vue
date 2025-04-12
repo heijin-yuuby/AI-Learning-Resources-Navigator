@@ -4,8 +4,8 @@
     
     <div class="page-header">
       <div class="container">
-        <h1 class="page-title">人工智能</h1>
-        <p class="page-subtitle">了解人工智能的基本概念、发展历史和最新应用</p>
+        <h1 class="page-title">关于AI</h1>
+        <p class="page-subtitle">一站式了解你想知道的！</p>
       </div>
     </div>
     
@@ -18,7 +18,7 @@
             </svg>
           </n-icon>
           <h3>AI 发展历史</h3>
-          <p>从图灵测试到深度学习，探索AI的发展历程</p>
+          <p>想法的诞生？以前的ai？</p>
         </div>
         
         <div class="nav-card" @click="$router.push('/ai-knowledge')">
@@ -27,8 +27,8 @@
               <path fill="currentColor" d="M12 2L2 7l10 5l10-5l-10-5zm0 10L2 7v10l10 5l10-5V7l-10 5zm0 10l-9-4.5v-5l9 4.5l9-4.5v5l-9 4.5z"/>
             </svg>
           </n-icon>
-          <h3>核心AI知识</h3>
-          <p>了解机器学习、神经网络和自然语言处理等核心概念</p>
+          <h3>AI核心关键词</h3>
+          <p>蒸馏？参数？在这帮你解释清楚</p>
         </div>
         
         <div class="nav-card" @click="$router.push('/llm-platforms')">

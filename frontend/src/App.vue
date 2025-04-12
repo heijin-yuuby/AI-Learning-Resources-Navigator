@@ -1,3 +1,4 @@
+/*设置应用的主题和语言*/
 <script setup>
 import { NConfigProvider, NMessageProvider, darkTheme } from 'naive-ui';
 import { provide, ref, onMounted, onBeforeUnmount } from 'vue';
@@ -8,14 +9,8 @@ const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 const theme = ref(prefersDark ? darkTheme : null);
 
 // Global theme variables for Naive UI
-provide('themeVars', {
-  primaryColor: '#1F466B',
-  primaryColorHover: '#2A5880',
-  borderRadius: '8px',
-  textColorBase: '#1F466B',
-  // 为Naive UI组件添加字体
-  fontFamily: 'var(--font-styrene-b)'
-});
+
+
 
 // 管理全局语言状态
 const appLanguage = ref(localStorage.getItem('language') || 'zh');

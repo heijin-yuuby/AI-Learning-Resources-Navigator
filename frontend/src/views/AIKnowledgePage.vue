@@ -11,7 +11,7 @@
         </template>
         返回
       </n-button>
-      <h1 class="page-title">核心AI知识</h1>
+      <h1 class="page-title">AI核心关键词</h1>
       <p class="page-subtitle">了解人工智能的基本概念和技术原理</p>
     </div>
     

@@ -40,8 +40,8 @@
 
 <script setup>
 import Navigation from '../components/layout/Navigation.vue';
-import LLMPlatforms from '../components/LLMPlatforms.vue';
-import LLMintegrationplatform from '../components/LLMintegrationplatform.vue';
+import LLMPlatforms from '../components/Platforms/LLMPlatforms.vue';
+import LLMintegrationplatform from '../components/Platforms/LLMintegrationplatform.vue';
 import '../assets/styles/platforms.css';
 import { ref, onMounted } from 'vue';
 

@@ -50,7 +50,7 @@
 <script setup>
 import { ref } from 'vue';
 import { NButton, NTag } from 'naive-ui';
-import '../assets/styles/platforms.css';
+import '../../assets/styles/platforms.css';
 
 const platforms = ref([
   {
