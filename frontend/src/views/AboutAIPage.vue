@@ -91,32 +91,48 @@ const introCardRef = ref(null);
 const branchCardRef = ref(null);
 
 onMounted(() => {
-  // 在组件挂载时为内容卡片添加初始状态类
+  // 确保页面加载后立即隐藏所有内容卡片
+  document.querySelectorAll('.content-card').forEach(card => {
+    card.style.opacity = '0';
+  });
+  
+  // 给页面充分时间加载所有元素
   setTimeout(() => {
     setupContentCards();
-  }, 0); // 使用setTimeout确保DOM已完全渲染
+  }, 300); // 增加延迟确保页面完全加载
 });
 
 // 设置内容卡片的动画
 function setupContentCards() {
-  // 添加初始状态类
+  // 选择所有内容卡片
   const contentCards = document.querySelectorAll('.content-card');
+  
+  // 添加初始状态类
   contentCards.forEach(card => {
+    // 移除可能的内联样式
+    card.style.opacity = '';
     card.classList.add('content-card-ready');
   });
   
-  // 创建 Intersection Observer
+  // 为初始视图中已经可见的卡片手动触发动画
+  const triggerInitialAnimation = () => {
+    contentCards.forEach((card, index) => {
+      setTimeout(() => {
+        card.classList.remove('content-card-ready');
+        card.classList.add('content-card-active');
+      }, 150 * index); // 间隔时间
+    });
+  };
+  
+  // 立即为可视区域内的卡片触发动画
+  triggerInitialAnimation();
+  
+  // 创建 Intersection Observer 用于处理滚动时进入视图的元素
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      // 当元素进入视图时
+      // 仅处理进入视图的元素
       if (entry.isIntersecting) {
-        // 为卡片添加动画
-        setTimeout(() => {
-          entry.target.classList.remove('content-card-ready');
-          entry.target.classList.add('content-card-active');
-        }, 150);
-        
-        // 动画触发后停止观察该元素
+        // 停止观察，避免重复触发
         observer.unobserve(entry.target);
       }
     });
@@ -211,6 +227,7 @@ function setupContentCards() {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 30px;
+  animation: fadeIn 1s ease-in-out
 }
 
 .ai-intro, .branch-section {
@@ -238,6 +255,7 @@ function setupContentCards() {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+  animation: fadeIn 1s ease-in-out;
 }
 
 .branch-card {
@@ -246,7 +264,7 @@ function setupContentCards() {
   padding: 20px;
   border-left: 4px solid var(--accent-blue);
   height: 100%;
-  animation: float-up 1s ease-in-out;
+  animation: fadeIn 1.5s ease-in-out;
 }
 
 .branch-card h3 {
