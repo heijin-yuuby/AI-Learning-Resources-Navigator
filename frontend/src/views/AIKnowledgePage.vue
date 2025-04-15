@@ -30,44 +30,56 @@ import { ref, onMounted } from 'vue';
 const bubbleRef = ref(null);
 
 onMounted(() => {
-  // 在组件挂载时为气泡添加初始状态类
+  // 确保页面加载后立即隐藏所有气泡
+  document.querySelectorAll('.keyword-bubble').forEach(bubble => {
+    bubble.style.opacity = '0';
+  });
+  
+  // 给页面充分时间加载所有元素
   setTimeout(() => {
-    const bubbles = document.querySelectorAll('.keyword-bubble');
-    bubbles.forEach(bubble => {
-      bubble.classList.add('bubble-ready');
-    });
-    
-    // 创建 Intersection Observer
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        // 当元素进入视图时
-        if (entry.isIntersecting) {
-          // 获取所有气泡
-          const bubbles = document.querySelectorAll('.keyword-bubble');
-          
-          // 为每个气泡添加动画，错开执行
-          bubbles.forEach((bubble, index) => {
-            setTimeout(() => {
-              bubble.classList.remove('bubble-ready');
-              bubble.classList.add('bubble-active');
-            }, 120 * index);
-          });
-          
-          // 动画触发后停止观察
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.2,
-      rootMargin: '0px 0px -50px 0px'
-    });
-
-    // 观察气泡组件
-    if (bubbleRef.value) {
-      observer.observe(bubbleRef.value.$el);
-    }
-  }, 0); // 使用setTimeout确保DOM已完全渲染
+    setupKeywordsBubble();
+  }, 300); // 增加延迟确保页面完全加载
 });
+
+// 设置关键词气泡的初始状态和动画
+function setupKeywordsBubble() {
+  // 获取所有气泡
+  const bubbles = document.querySelectorAll('.keyword-bubble');
+  
+  // 添加初始状态类
+  bubbles.forEach(bubble => {
+    // 移除可能的内联样式，防止气泡被一直隐藏
+    bubble.style.opacity = '';
+    bubble.classList.add('bubble-ready');
+  });
+  
+  // 创建 Intersection Observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      // 当元素进入视图时
+      if (entry.isIntersecting) {
+        // 为每个气泡添加动画，错开执行
+        bubbles.forEach((bubble, index) => {
+          setTimeout(() => {
+            bubble.classList.remove('bubble-ready');
+            bubble.classList.add('bubble-active');
+          }, 120 * index);
+        });
+        
+        // 动画触发后停止观察
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.2,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  // 观察气泡组件
+  if (bubbleRef.value && bubbleRef.value.$el) {
+    observer.observe(bubbleRef.value.$el);
+  }
+}
 </script>
 
 <style scoped>
