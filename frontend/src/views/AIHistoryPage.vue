@@ -83,7 +83,7 @@ onMounted(() => {
 
 .page-title {
   font-size: 2.5rem;
-  color: var(--text-light);
+  color: var(--accent-yellow);
   margin-top: 20px;
   text-align: center;
   margin-bottom: 16px;
@@ -91,7 +91,7 @@ onMounted(() => {
 
 .page-subtitle {
   text-align: center;
-  color: var(--text-light);
+  color: var(--accent-yellow);
   font-size: 1.2rem;
   max-width: 700px;
   margin: 0 auto;
@@ -103,5 +103,9 @@ onMounted(() => {
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.n-button {
+  color:aliceblue;
 }
 </style> 

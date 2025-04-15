@@ -15,130 +15,125 @@
       <p class="page-subtitle">了解人工智能的基本概念和技术原理</p>
     </div>
     
-    <div class="content">
-      <KeywordsBubble ref="bubbleRef" />
+    <div class="filter-section">
+      <button class="filter-toggle" @click="isFilterExpanded = !isFilterExpanded">
+        {{ isFilterExpanded ? '收起分类 ▲' : '展开分类 ▼' }}
+      </button>
       
-      <div class="intro-section card-ready" ref="introSectionRef">
-        <h2>什么是人工智能？</h2>
-        <p>人工智能（Artificial Intelligence）是指由人类创造的计算机系统</p>
-        <br>
-        <p>它们能够执行通常需要人类智能才能完成的任务</p>
-        <br>
-        <p>这些任务包括视觉感知、语音识别、决策制定、语言翻译以及从数据中学习等。</p>
-      </div>
-      
-      <div class="branch-section card-ready" ref="branchSectionRef">
-        <h2>人工智能的主要分支</h2>
-        <div class="ai-branches">
-          <div class="branch-item">
-            <h3>机器学习</h3>
-            <p>机器学习是AI的一个核心分支，专注于开发能够从数据中学习并做出预测的算法和模型，而无需被明确编程。</p>
-          </div>
-          
-          <div class="branch-item">
-            <h3>深度学习</h3>
-            <p>深度学习是机器学习的一个子集，使用多层神经网络处理复杂数据，在图像识别、自然语言处理等领域取得了突破性进展。</p>
-          </div>
-          
-          <div class="branch-item">
-            <h3>自然语言处理</h3>
-            <p>自然语言处理（NLP）专注于使计算机能够理解、解释和生成人类语言，是聊天机器人、翻译和文本分析的基础。</p>
-          </div>
-          
-          <div class="branch-item">
-            <h3>计算机视觉</h3>
-            <p>计算机视觉使计算机能够识别和处理图像和视频，广泛应用于自动驾驶、医疗诊断和安防系统等领域。</p>
-          </div>
+      <div class="category-filter" :class="{ 'expanded': isFilterExpanded }">
+        <div class="custom-tabs">
+          <button 
+            v-for="category in categories" 
+            :key="category.id" 
+            class="custom-tab" 
+            :class="{ 'active': selectedCategory === category.id }"
+            @click="selectedCategory = category.id"
+          >
+            {{ category.name }}
+          </button>
         </div>
       </div>
+    </div>
+    
+    <div class="content">
+      <KeywordsBubble ref="bubbleRef" />
     </div>
   </div>
 </template>
 
 <script setup>
-import { NIcon, NButton } from 'naive-ui';
+import { NIcon, NButton, NRadioGroup, NRadioButton } from 'naive-ui';
 import KeywordsBubble from '../components/cards/KeywordsBubble.vue';
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, computed, watch } from 'vue';
 
-// 引用气泡组件和卡片组件
+// 引用气泡组件
 const bubbleRef = ref(null);
-const introSectionRef = ref(null);
-const branchSectionRef = ref(null);
+const selectedCategory = ref('all');
+const categories = ref([]);
+const isFilterExpanded = ref(false);
 
+// 获取所有关键词和分类
 onMounted(() => {
-  // 确保页面加载后立即隐藏所有气泡和卡片
-  document.querySelectorAll('.keyword-bubble, .card-ready').forEach(el => {
-    el.style.opacity = '0';
+  // 确保页面加载后立即隐藏所有气泡
+  document.querySelectorAll('.keyword-bubble').forEach(bubble => {
+    bubble.style.opacity = '0';
   });
+  
+  // 获取分类数据
+  if (bubbleRef.value) {
+    categories.value = bubbleRef.value.categories;
+  }
   
   // 给页面充分时间加载所有元素
   setTimeout(() => {
-    setupBubbles();
-    setupCards();
-  }, 300);
+    setupKeywordsBubble();
+  }, 300); // 增加延迟确保页面完全加载
 });
 
-// 设置卡片的动画
-function setupCards() {
-  const cards = document.querySelectorAll('.card-ready');
+// 监听分类变化
+watch(selectedCategory, (newCategory) => {
+  filterKeywordsByCategory(newCategory);
+  // 选择分类后自动收起分类栏
+  if (isFilterExpanded.value) {
+    setTimeout(() => {
+      isFilterExpanded.value = false;
+    }, 300);
+  }
+});
+
+// 根据分类筛选关键词
+function filterKeywordsByCategory(category) {
+  // 获取所有气泡
+  const bubbles = document.querySelectorAll('.keyword-bubble');
   
-  // 添加初始状态
-  cards.forEach(card => {
-    card.style.opacity = '';
+  if (category === 'all') {
+    // 显示所有气泡
+    bubbles.forEach(bubble => {
+      bubble.style.display = '';
+    });
+  } else {
+    // 根据分类显示对应气泡
+    bubbles.forEach((bubble, index) => {
+      // 通过索引获取关键词数据
+      const keyword = bubbleRef.value.keywords[index];
+      if (keyword && keyword.category === category) {
+        bubble.style.display = '';
+      } else {
+        bubble.style.display = 'none';
+      }
+    });
+  }
+  
+  // 重新应用气泡动画
+  setupKeywordsBubble();
+}
+
+// 设置关键词气泡的初始状态和动画
+function setupKeywordsBubble() {
+  // 获取所有可见的气泡
+  const bubbles = document.querySelectorAll('.keyword-bubble:not([style*="display: none"])');
+  
+  // 添加初始状态类
+  bubbles.forEach(bubble => {
+    // 移除可能的内联样式，防止气泡被一直隐藏
+    bubble.style.opacity = '';
+    bubble.classList.add('bubble-ready');
   });
   
   // 创建 Intersection Observer
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
+      // 当元素进入视图时
       if (entry.isIntersecting) {
-        // 为卡片添加动画
-        setTimeout(() => {
-          entry.target.classList.add('card-active');
-        }, 200);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.2,
-    rootMargin: '0px 0px -50px 0px'
-  });
-
-  // 观察卡片
-  if (introSectionRef.value) observer.observe(introSectionRef.value);
-  if (branchSectionRef.value) observer.observe(branchSectionRef.value);
-}
-
-// 设置气泡的初始状态和动画
-function setupBubbles() {
-  // 选择所有气泡
-  const bubbles = document.querySelectorAll('.keyword-bubble');
-  
-  // 添加初始状态类
-  bubbles.forEach(bubble => {
-    // 移除可能的内联样式
-    bubble.style.opacity = '';
-    bubble.classList.add('bubble-ready');
-  });
-  
-  // 为初始视图中已经可见的气泡手动触发动画
-  const triggerInitialAnimation = () => {
-    bubbles.forEach((bubble, index) => {
-      setTimeout(() => {
-        bubble.classList.remove('bubble-ready');
-        bubble.classList.add('bubble-active');
-      }, 120 * index); // 间隔时间
-    });
-  };
-  
-  // 立即为可视区域内的气泡触发动画
-  triggerInitialAnimation();
-  
-  // 创建 Intersection Observer 用于处理滚动时进入视图的元素
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      // 仅处理进入视图的元素
-      if (entry.isIntersecting) {
-        // 停止观察，避免重复触发
+        // 为每个气泡添加动画，错开执行
+        bubbles.forEach((bubble, index) => {
+          setTimeout(() => {
+            bubble.classList.remove('bubble-ready');
+            bubble.classList.add('bubble-active');
+          }, 120 * index);
+        });
+        
+        // 动画触发后停止观察
         observer.unobserve(entry.target);
       }
     });
@@ -163,7 +158,6 @@ function setupBubbles() {
 
 .page-header {
   margin-bottom: 40px;
-  animation: fadeIn 1s ease-in-out;
 }
 
 .page-title {
@@ -181,69 +175,89 @@ function setupBubbles() {
   max-width: 700px;
   margin: 0 auto;
 }
+.n-button {
+  color:aliceblue;
+}
+
+.filter-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.filter-toggle {
+  background-color: var(--accent-blue);
+  color: var(--accent-yellow);
+  border: none;
+  padding: 8px 16px;
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  font-weight: 600;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+}
+
+.filter-toggle:hover {
+  background-color: rgba(31, 70, 107, 0.9);
+}
+
+.category-filter {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+  padding: 0;
+  width: 100%;
+  color: var(--accent-yellow);
+  background-color: var(--accent-blue);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.category-filter.expanded {
+  max-height: 200px;
+  opacity: 1;
+  padding: 12px;
+}
+
+.custom-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.custom-tab {
+  background-color: transparent;
+  border: 1px solid var(--accent-yellow);
+  color: var(--accent-yellow);
+  padding: 6px 14px;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.custom-tab:hover {
+  background-color: rgba(245, 230, 191, 0.2);
+}
+
+.custom-tab.active {
+  background-color: rgba(245, 230, 191, 0.3);
+  font-weight: 700;
+}
 
 .content {
-  margin-top: 40px;
+  margin-top: 20px;
   padding: 20px;
   background-color: var(--card-bg);
   border-radius: 8px;
   box-shadow: var(--shadow-md);
-  animation: fadeIn 1.2s ease-in-out;
-  transform-origin: center top;
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.intro-section,
-.branch-section {
-  background: var(--card-bg);
-  border-radius: 12px;
-  padding: 30px;
-  box-shadow: var(--shadow-md);
-  transition: all 0.6s ease-out;
-  margin-top: 30px;
-}
-
-.card-ready {
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-.card-active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.branch-item {
-  background: var(--bg-secondary);
-  border-radius: 8px;
-  padding: 20px;
-  border-left: 4px solid var(--accent-blue);
-  margin-bottom: 20px;
-  transition: all 0.3s ease;
-}
-
-.branch-item:last-child {
-  margin-bottom: 0;
-}
-
-.ai-branches {
-  display: grid;
-  gap: 20px;
-}
-
-@media (min-width: 768px) {
-  .ai-branches {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 </style> 
