@@ -1,3 +1,4 @@
+/*vue router 4 路由配置*/
 import { createRouter, createWebHistory } from 'vue-router';
 import HomePage from '../views/HomePage.vue';
 import AboutAIPage from '../views/AboutAIPage.vue';

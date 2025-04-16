@@ -67,8 +67,12 @@ AI Learning Resources Navigator/
 │   │   │       └── fonts.css         # 字体定义
 │   │   ├── components/      # Vue组件
 │   │   │   ├── layout/      # 布局组件
+│   │   │   │   └── Navigation.vue    # 导航栏组件
 │   │   │   ├── cards/       # 卡片组件
+│   │   │   │   └── KeywordsBubble.vue # 关键词气泡组件
 │   │   │   ├── Platforms/   # 平台相关组件
+│   │   │   │   ├── LLMPlatforms.vue   # LLM平台组件
+│   │   │   │   └── LLMintegrationplatform.vue # LLM集成平台组件
 │   │   │   └── timeline/    # 时间线组件
 │   │   ├── views/           # 页面组件
 │   │   │   ├── HomePage.vue           # 首页
@@ -77,10 +81,16 @@ AI Learning Resources Navigator/
 │   │   │   ├── AIKnowledgePage.vue    # AI知识页面
 │   │   │   └── LLMPlatformsPage.vue   # LLM平台页面
 │   │   ├── router/          # 路由配置
+│   │   │   └── index.js     # 路由定义
+│   │   ├── main.js          # 入口文件
 │   │   └── App.vue          # 根组件
-│   └── public/              # 公共资源
+│   ├── public/              # 公共资源
+│   │   └── index.html       # HTML模板
+│   ├── package.json         # 项目依赖
+│   └── vite.config.js       # Vite配置
 └── doc/                     # 项目文档
     ├── animations/          # 动画实现文档
+    │   └── animation-guide.md # 动画指南
     ├── history.md           # 历史内容
     └── keywords.md          # 关键词定义
 ```
@@ -267,8 +277,12 @@ AI Learning Resources Navigator/
 │   │   │       └── fonts.css         # Font definitions
 │   │   ├── components/      # Vue components
 │   │   │   ├── layout/      # Layout components
+│   │   │   │   └── Navigation.vue    # Navigation bar component
 │   │   │   ├── cards/       # Card components
+│   │   │   │   └── KeywordsBubble.vue # Keywords bubble component
 │   │   │   ├── Platforms/   # Platform-related components
+│   │   │   │   ├── LLMPlatforms.vue   # LLM platforms component
+│   │   │   │   └── LLMintegrationplatform.vue # LLM integration platforms component
 │   │   │   └── timeline/    # Timeline components
 │   │   ├── views/           # Page components
 │   │   │   ├── HomePage.vue           # Home page
@@ -277,10 +291,16 @@ AI Learning Resources Navigator/
 │   │   │   ├── AIKnowledgePage.vue    # AI knowledge page
 │   │   │   └── LLMPlatformsPage.vue   # LLM platforms page
 │   │   ├── router/          # Router configuration
+│   │   │   └── index.js     # Route definitions
+│   │   ├── main.js          # Entry file
 │   │   └── App.vue          # Root component
-│   └── public/              # Public resources
+│   ├── public/              # Public resources
+│   │   └── index.html       # HTML template
+│   ├── package.json         # Project dependencies
+│   └── vite.config.js       # Vite configuration
 └── doc/                     # Project documentation
     ├── animations/          # Animation implementation docs
+    │   └── animation-guide.md # Animation guide
     ├── history.md           # History content
     └── keywords.md          # Keyword definitions
 ```
