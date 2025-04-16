@@ -3,81 +3,32 @@
  * Contains all animation-related styles for the application
  */
 
-/* Scroll-based animations */
-.feature-block {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
-}
-
-.feature-block.animate-float-up {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* 通用的动画初始状态类 */
-.animate-ready {
-  opacity: 0 !important;
-  transform: translateY(50px) !important;
-}
-
-/* 通用的动画激活类 */
-.animate-active {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-  transition: opacity 0.6s ease, transform 0.6s ease !important;
-}
-
-/* 平台卡片动画 */
-.platform-card-ready {
-  opacity: 0;
-  transform: translateX(-30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-  will-change: opacity, transform;
-}
-
-.platform-card-active {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-/* 时间线项目动画 */
-.timeline-item-ready {
-  opacity: 0;
-  transform: translateY(50px);
-}
-
-.timeline-item-active {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-/* 知识气泡动画 */
-.bubble-ready {
-  opacity: 0;
-  transform: translateY(50px);
-}
-
-.bubble-active {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-/* 内容卡片动画 */
+/* 通用动画类状态 */
+.animate-ready,
+.feature-block,
+.platform-card-ready,
+.timeline-item-ready,
+.bubble-ready,
 .content-card-ready {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  will-change: opacity, transform;
 }
 
+/* 通用动画激活类 */
+.animate-active,
+.feature-block.animate-float-up,
+.platform-card-active,
+.timeline-item-active,
+.bubble-active,
 .content-card-active {
   opacity: 1;
   transform: translateY(0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-/* Animation keyframes */
+/* Animation keyframes - 集中定义所有动画关键帧 */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -109,7 +60,7 @@
   }
 }
 
-/* Animation utility classes */
+/* 可复用动画类 */
 .fade-in {
   animation: fadeIn var(--transition-normal) ease forwards;
 }
@@ -122,7 +73,7 @@
   animation: float-up var(--transition-normal) ease forwards;
 }
 
-/* Staggered animation delays */
+/* 动画延迟类 */
 .stagger-1 { animation-delay: 0.1s; }
 .stagger-2 { animation-delay: 0.3s; }
 .stagger-3 { animation-delay: 0.5s; }

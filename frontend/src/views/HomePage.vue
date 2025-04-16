@@ -5,15 +5,14 @@
     <div class="hero-section">
       <div class="hero-content">
         <h1 class="hero-title">AI Navigator</h1>
-        <p class="hero-subtitle">Explore the infinite possibilities of artificial intelligence 
-          <br>learn about cutting-edge technologies</p>
+        <p class="hero-subtitle">让你深度了解ai的导航站</p>
         <div class="hero-buttons">
           <n-button type="primary" size="large" class="primary-button" @click="$router.push('/about-ai')" color="#1F466B">
             了解 AI
           </n-button>
           <n-button text size="large" class="secondary-button" @click="$router.push('/llm-platforms')">
             浏览平台
-          </n-button>
+          </n-button>w
         </div>
       </div>
     </div>

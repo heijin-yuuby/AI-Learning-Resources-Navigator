@@ -72,8 +72,9 @@
   --font-size-xl: 1.5rem;
   --font-size-xxl: 2rem;
   --font-size-xxxl: 3rem;
-  /*按钮效果*/
-  --button-hover-color:var(var(--accent-yellow))
+  
+  /* 按钮效果 */
+  --button-hover-color: var(--accent-yellow);
 }
 
 /* 基础样式重置 */

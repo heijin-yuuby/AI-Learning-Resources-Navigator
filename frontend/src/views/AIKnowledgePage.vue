@@ -1,5 +1,5 @@
 <template>
-  <div class="knowledge-container">
+  <div class="page-container">
     <div class="page-header">
       <n-button quaternary @click="$router.push('/about-ai')">
         <template #icon>
@@ -35,7 +35,7 @@
       </div>
     </div>
     
-    <div class="content">
+    <div class="content-section">
       <KeywordsBubble ref="bubbleRef" />
     </div>
   </div>
@@ -150,33 +150,8 @@ function setupKeywordsBubble() {
 </script>
 
 <style scoped>
-.knowledge-container {
-  padding: 40px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.page-header {
-  margin-bottom: 40px;
-}
-
-.page-title {
-  font-size: 2.5rem;
-  color: var(--accent-yellow);
-  margin-top: 20px;
-  text-align: center;
-  margin-bottom: 16px;
-}
-
-.page-subtitle {
-  text-align: center;
-  color: var(--accent-yellow);
-  font-size: 1.2rem;
-  max-width: 700px;
-  margin: 0 auto;
-}
 .n-button {
-  color:aliceblue;
+  color: var(--text-light);
 }
 
 .filter-section {
@@ -248,16 +223,11 @@ function setupKeywordsBubble() {
   font-weight: 700;
 }
 
-.content {
+.content-section {
   margin-top: 20px;
   padding: 20px;
   background-color: var(--card-bg);
   border-radius: 8px;
   box-shadow: var(--shadow-md);
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
 }
 </style> 

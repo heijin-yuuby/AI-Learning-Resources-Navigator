@@ -1,0 +1,124 @@
+/**
+ * components.css
+ * 统一的组件样式，用于减少Vue组件中的CSS重复
+ */
+
+/* === 页面容器 === */
+.page-container {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* === 页面头部 === */
+.page-header {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.page-title {
+  font-size: var(--font-size-xxxl);
+  color: var(--accent-yellow);
+  margin-top: 20px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.page-subtitle {
+  text-align: center;
+  color: var(--accent-yellow);
+  font-size: var(--font-size-lg);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* === 内容区域 === */
+.content-section {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+/* === 气泡组件统一样式 === */
+.keyword-bubble {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: #78a8c7;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+.keyword-bubble:hover {
+  transform: scale(1.1) !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* === 卡片组件 === */
+.info-card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius-lg);
+  padding: 30px;
+  box-shadow: var(--shadow-md);
+  transition: all 0.6s ease-out;
+  margin-top: 30px;
+}
+
+/* === 自定义标签/分类组件 === */
+.custom-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.custom-tab {
+  background-color: transparent;
+  border: 1px solid var(--accent-yellow);
+  color: var(--accent-yellow);
+  padding: 6px 14px;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.custom-tab:hover {
+  background-color: rgba(245, 230, 191, 0.2);
+}
+
+.custom-tab.active {
+  background-color: rgba(245, 230, 191, 0.3);
+  font-weight: 700;
+}
+
+/* === 响应式布局 === */
+@media (max-width: 768px) {
+  .page-title {
+    font-size: calc(var(--font-size-xxxl) * 0.8);
+  }
+  
+  .page-subtitle {
+    font-size: var(--font-size-md);
+  }
+  
+  .keyword-bubble {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .keyword-bubble span {
+    font-size: 0.9rem;
+  }
+} 
