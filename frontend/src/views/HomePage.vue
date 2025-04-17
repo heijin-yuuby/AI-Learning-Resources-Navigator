@@ -12,7 +12,7 @@
           </n-button>
           <n-button text size="large" class="secondary-button" @click="$router.push('/llm-platforms')">
             浏览平台
-          </n-button>w
+          </n-button>
         </div>
       </div>
     </div>
