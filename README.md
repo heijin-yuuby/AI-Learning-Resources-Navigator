@@ -101,7 +101,6 @@ AI Learning Resources Navigator/
 
 1. **CSS变量系统**：
    - 在`main.css`中定义全局变量，包括颜色、字体、间距等
-   - 支持浅色/深色模式主题切换
 
 2. **模块化样式组织**：
    - `fonts.css`：字体定义，最先导入以确保CSS变量可用
