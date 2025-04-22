@@ -39,7 +39,6 @@ AI Learning Resources Navigator是一个中文AI学习资源导航平台，旨�
 - [ ] UI设计优化
   - [x] 知识页面
   - [x] LLM页面样式调整
-  - [ ] 深色模式支持
 - [ ] AI应用案例展示
 
 ## 项目特色
@@ -248,7 +247,6 @@ AI Learning Resources Navigator is a Chinese AI learning resource navigation pla
 - [ ] UI design optimization
   - [x] Knowledge page
   - [x] LLM page style adjustments
-  - [ ] Dark mode support
 - [ ] AI application case display
 
 ## Project Features
@@ -310,7 +308,6 @@ The project employs a modular CSS architecture to improve code maintainability a
 
 1. **CSS Variable System**:
    - Global variables defined in `main.css`, including colors, fonts, spacing, etc.
-   - Support for light/dark mode theme switching
 
 2. **Modular Style Organization**:
    - `fonts.css`: Font definitions, imported first to ensure CSS variables are available

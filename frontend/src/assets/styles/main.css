@@ -227,36 +227,6 @@ button, .btn {
   opacity: 0;
 }
 
-/* 深色模式变量 */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-primary: #0A1622;
-    --bg-secondary: #142438;
-    --bg-tertiary: #1F3450;
-    
-    --text-primary: #FFFFFF;
-    --text-secondary: #E0E0E0;
-    --text-tertiary: #B0B0B0;
-    --text-light: #FFFFFF;
-    
-    --card-bg: #142438;
-    --card-border: #1F3450;
-    --border-color: rgba(255, 255, 255, 0.1);
-    
-    --primary-color: #3A6EA5;
-    --primary-gradient: linear-gradient(135deg, #3A6EA5 0%, #2A5880 100%);
-    --primary-hover-gradient: linear-gradient(135deg, #2A5880 0%, #3A6EA5 100%);
-    
-    --accent-yellow: #D9C27E;
-    
-    --nav-bg: #0A1622;
-    
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
-  }
-}
-
 /* 按钮悬停效果覆盖 */
 .n-button.primary-button:hover {
   background: rgba(251, 242, 242, 0.1) !important;

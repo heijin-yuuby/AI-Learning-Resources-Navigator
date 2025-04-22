@@ -1,16 +1,8 @@
 /*设置应用的主题和语言*/
 <script setup>
-import { NConfigProvider, NMessageProvider, darkTheme } from 'naive-ui';
+import { NConfigProvider, NMessageProvider } from 'naive-ui';
 import { provide, ref, onMounted, onBeforeUnmount } from 'vue';
 // 样式已在 main.js 中导入
-
-// Set theme based on system preference (null for light, darkTheme for dark)
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-const theme = ref(prefersDark ? darkTheme : null);
-
-// Global theme variables for Naive UI
-
-
 
 // 管理全局语言状态
 const appLanguage = ref(localStorage.getItem('language') || 'zh');
@@ -34,7 +26,7 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="app" :class="{'lang-en': appLanguage === 'en'}">
-    <n-config-provider :theme="theme">
+    <n-config-provider>
       <n-message-provider>
         <router-view />
       </n-message-provider>
