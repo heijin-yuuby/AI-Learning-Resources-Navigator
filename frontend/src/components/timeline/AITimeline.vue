@@ -115,6 +115,19 @@ const timelinePeriods = [
   display: flex;
   justify-content: space-between;
   align-items: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.timeline-item.timeline-item-ready {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.timeline-item.timeline-item-active {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .timeline-item:nth-child(odd) {
