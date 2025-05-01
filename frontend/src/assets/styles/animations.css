@@ -13,7 +13,6 @@
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-  will-change: opacity, transform;
 }
 
 /* 通用动画激活类 */
@@ -28,18 +27,15 @@
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-/* Animation keyframes - 集中定义所有动画关键帧 */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* 为悬停元素应用will-change以提高性能 */
+.platform-card:hover,
+.info-card.clickable:hover,
+.keyword-bubble:hover,
+.custom-tab:hover {
+  will-change: transform;
 }
 
+/* Animation keyframes - 集中定义所有动画关键帧 */
 @keyframes fadeIn {
   from { 
     opacity: 0; 
@@ -66,7 +62,7 @@
 }
 
 .fade-in-up {
-  animation: fadeInUp var(--transition-normal) ease forwards;
+  animation: float-up var(--transition-normal) ease forwards;
 }
 
 .float-up {

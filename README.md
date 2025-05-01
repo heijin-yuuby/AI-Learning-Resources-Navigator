@@ -6,7 +6,7 @@
 
 ---
 
-<h2 id="chinese-version">中文版</h2>
+<h2 id="chinese-version">中文</h2>
 
 这是一个使用Vue.js构建的Web应用程序，提供AI学习资源导航和各大LLM平台的便捷访问。
 
@@ -19,7 +19,7 @@ AI Learning Resources Navigator是一个中文AI学习资源导航平台，旨�
 - 主流LLM平台快速访问
 - AI知识交互式学习
 
-## 开发进度
+## 开发进度[本项目已经完成啦，辛苦自己了]
 
 - [x] 首页开发与设计优化
 - [x] AI简介页面
@@ -36,10 +36,9 @@ AI Learning Resources Navigator是一个中文AI学习资源导航平台，旨�
   - [x] 创建共享组件样式
   - [x] 统一动画系统
   - [x] 减少样式重复
-- [ ] UI设计优化
+- [x] UI设计优化
   - [x] 知识页面
   - [x] LLM页面样式调整
-- [ ] AI应用案例展示
 
 ## 项目特色
 
@@ -164,6 +163,11 @@ npm --version
    npm install
    ```
 
+   ```bash
+   cd frontend
+   npm install
+   ```
+
 3. **启动开发服务器**
    ```bash
    npm run dev
@@ -227,7 +231,7 @@ AI Learning Resources Navigator is a Chinese AI learning resource navigation pla
 - Quick access to mainstream LLM platforms
 - Interactive AI knowledge learning
 
-## Development Progress
+## Development Progress[All finished]
 
 - [x] Home page development and design optimization
 - [x] About AI page
@@ -247,7 +251,6 @@ AI Learning Resources Navigator is a Chinese AI learning resource navigation pla
 - [ ] UI design optimization
   - [x] Knowledge page
   - [x] LLM page style adjustments
-- [ ] AI application case display
 
 ## Project Features
 

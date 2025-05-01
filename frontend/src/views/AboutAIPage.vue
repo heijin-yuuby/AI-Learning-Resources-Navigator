@@ -91,15 +91,10 @@ const introCardRef = ref(null);
 const branchCardRef = ref(null);
 
 onMounted(() => {
-  // 确保页面加载后立即隐藏所有内容卡片
-  document.querySelectorAll('.content-card').forEach(card => {
-    card.style.opacity = '0';
-  });
-  
-  // 给页面充分时间加载所有元素
+  // 使用一个 setTimeout 让页面完全加载
   setTimeout(() => {
     setupContentCards();
-  }, 300); // 增加延迟确保页面完全加载
+  }, 100);
 });
 
 // 设置内容卡片的动画
@@ -107,31 +102,24 @@ function setupContentCards() {
   // 选择所有内容卡片
   const contentCards = document.querySelectorAll('.content-card');
   
-  // 添加初始状态类
-  contentCards.forEach(card => {
-    // 移除可能的内联样式
-    card.style.opacity = '';
+  // 为内容卡片添加初始状态类并设置动画
+  contentCards.forEach((card, index) => {
     card.classList.add('content-card-ready');
+    
+    // 错开执行动画
+    setTimeout(() => {
+      card.classList.remove('content-card-ready');
+      card.classList.add('content-card-active');
+    }, 150 * index);
   });
   
-  // 为初始视图中已经可见的卡片手动触发动画
-  const triggerInitialAnimation = () => {
-    contentCards.forEach((card, index) => {
-      setTimeout(() => {
-        card.classList.remove('content-card-ready');
-        card.classList.add('content-card-active');
-      }, 150 * index); // 间隔时间
-    });
-  };
-  
-  // 立即为可视区域内的卡片触发动画
-  triggerInitialAnimation();
-  
-  // 创建 Intersection Observer 用于处理滚动时进入视图的元素
+  // 创建 Intersection Observer 仅用于处理滚动时进入视图的新元素
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       // 仅处理进入视图的元素
       if (entry.isIntersecting) {
+        entry.target.classList.remove('content-card-ready');
+        entry.target.classList.add('content-card-active');
         // 停止观察，避免重复触发
         observer.unobserve(entry.target);
       }
@@ -141,9 +129,24 @@ function setupContentCards() {
     rootMargin: '0px 0px -50px 0px'
   });
 
-  // 观察内容卡片
-  if (introCardRef.value) observer.observe(introCardRef.value);
-  if (branchCardRef.value) observer.observe(branchCardRef.value);
+  // 仅观察尚未进入视图的内容卡片
+  if (introCardRef.value && !isElementInViewport(introCardRef.value)) {
+    observer.observe(introCardRef.value);
+  }
+  if (branchCardRef.value && !isElementInViewport(branchCardRef.value)) {
+    observer.observe(branchCardRef.value);
+  }
+}
+
+// 检查元素是否在视口中的辅助函数
+function isElementInViewport(el) {
+  const rect = el.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
 }
 </script>
 

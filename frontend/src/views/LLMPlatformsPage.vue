@@ -50,16 +50,11 @@ const llmPlatformsRef = ref(null);
 const integrationPlatformsRef = ref(null);
 
 onMounted(() => {
-  // 确保页面加载后立即隐藏所有卡片
-  document.querySelectorAll('.platform-card').forEach(card => {
-    card.style.opacity = '0';
-  });
-  
-  // 给页面充分时间加载所有元素
+  // 使用单个setTimeout优化页面加载
   setTimeout(() => {
     setupPlatformCards('llm');
     setupPlatformCards('integration');
-  }, 300); // 增加延迟确保页面完全加载
+  }, 100);
 });
 
 // 设置平台卡片的初始状态和动画
@@ -69,32 +64,27 @@ function setupPlatformCards(platformType) {
     ? document.querySelectorAll('.llm-platforms:first-of-type .platform-card')
     : document.querySelectorAll('.llm-platforms:last-of-type .platform-card');
   
-  // 添加初始状态类
-  cards.forEach(card => {
-    // 移除可能的内联样式
-    card.style.opacity = '';
+  // 添加初始状态类并立即触发动画
+  cards.forEach((card, index) => {
     card.classList.add('platform-card-ready');
-  });
-  
-  // 为初始视图中已经可见的卡片手动触发动画
-  const triggerInitialAnimation = () => {
+    
     // 为每个卡片添加动画，从左到右优雅地错开执行
-    cards.forEach((card, index) => {
-      setTimeout(() => {
-        card.classList.remove('platform-card-ready');
-        card.classList.add('platform-card-active');
-      }, 200 * index); // 间隔时间
-    });
-  };
-  
-  // 立即为可视区域内的卡片触发动画
-  triggerInitialAnimation();
+    setTimeout(() => {
+      card.classList.remove('platform-card-ready');
+      card.classList.add('platform-card-active');
+    }, 150 * index); // 减少间隔时间提高性能
+  });
   
   // 创建 Intersection Observer 用于处理滚动时进入视图的元素
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       // 仅处理进入视图的元素
       if (entry.isIntersecting) {
+        // 检查是否已有动画类
+        if (!entry.target.classList.contains('platform-card-active')) {
+          entry.target.classList.remove('platform-card-ready');
+          entry.target.classList.add('platform-card-active');
+        }
         // 停止观察，避免重复触发
         observer.unobserve(entry.target);
       }
@@ -104,11 +94,25 @@ function setupPlatformCards(platformType) {
     rootMargin: '0px 0px -50px 0px'
   });
 
-  // 观察相应的平台组件
+  // 观察相应的平台组件，但仅观察视口外的元素
   const targetRef = platformType === 'llm' ? llmPlatformsRef : integrationPlatformsRef;
   if (targetRef.value && targetRef.value.$el) {
-    observer.observe(targetRef.value.$el);
+    // 仅当元素不在视口内时才观察
+    if (!isElementInViewport(targetRef.value.$el)) {
+      observer.observe(targetRef.value.$el);
+    }
   }
+}
+
+// 检查元素是否在视口中的辅助函数
+function isElementInViewport(el) {
+  const rect = el.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
 }
 </script>
 

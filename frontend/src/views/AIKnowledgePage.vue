@@ -54,20 +54,15 @@ const isFilterExpanded = ref(false);
 
 // 获取所有关键词和分类
 onMounted(() => {
-  // 确保页面加载后立即隐藏所有气泡
-  document.querySelectorAll('.keyword-bubble').forEach(bubble => {
-    bubble.style.opacity = '0';
-  });
-  
   // 获取分类数据
   if (bubbleRef.value) {
     categories.value = bubbleRef.value.categories;
   }
   
-  // 给页面充分时间加载所有元素
+  // 直接设置气泡动画，无需延迟
   setTimeout(() => {
     setupKeywordsBubble();
-  }, 300); // 增加延迟确保页面完全加载
+  }, 100);
 });
 
 // 监听分类变化
@@ -113,25 +108,25 @@ function setupKeywordsBubble() {
   // 获取所有可见的气泡
   const bubbles = document.querySelectorAll('.keyword-bubble:not([style*="display: none"])');
   
-  // 添加初始状态类
-  bubbles.forEach(bubble => {
-    // 移除可能的内联样式，防止气泡被一直隐藏
-    bubble.style.opacity = '';
+  // 优化动画处理
+  bubbles.forEach((bubble, index) => {
+    // 添加初始状态类
     bubble.classList.add('bubble-ready');
+    
+    // 使用较小的延迟值，错开执行动画
+    setTimeout(() => {
+      bubble.classList.remove('bubble-ready');
+      bubble.classList.add('bubble-active');
+    }, 80 * index); // 减少延迟时间提高性能
   });
   
-  // 创建 Intersection Observer
+  // 创建 Intersection Observer 仅用于处理视口外的气泡
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      // 当元素进入视图时
-      if (entry.isIntersecting) {
-        // 为每个气泡添加动画，错开执行
-        bubbles.forEach((bubble, index) => {
-          setTimeout(() => {
-            bubble.classList.remove('bubble-ready');
-            bubble.classList.add('bubble-active');
-          }, 120 * index);
-        });
+      // 当元素进入视图时且未激活
+      if (entry.isIntersecting && !entry.target.classList.contains('bubble-active')) {
+        entry.target.classList.remove('bubble-ready');
+        entry.target.classList.add('bubble-active');
         
         // 动画触发后停止观察
         observer.unobserve(entry.target);
@@ -142,10 +137,23 @@ function setupKeywordsBubble() {
     rootMargin: '0px 0px -50px 0px'
   });
 
-  // 观察气泡组件
+  // 观察气泡组件，但只观察视口外的元素
   if (bubbleRef.value && bubbleRef.value.$el) {
-    observer.observe(bubbleRef.value.$el);
+    if (!isElementInViewport(bubbleRef.value.$el)) {
+      observer.observe(bubbleRef.value.$el);
+    }
   }
+}
+
+// 检查元素是否在视口中的辅助函数
+function isElementInViewport(el) {
+  const rect = el.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
 }
 </script>
 
